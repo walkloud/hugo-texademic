@@ -1,0 +1,20 @@
+name = "TeXaDemic"
+license = "MIT"
+licenselink = "https://github.com/walkloud/hugo-texademic/blob/main/LICENSE"
+description = "A latex-style hugo theme with the gruvbox color scheme for personal and group academic sites"
+
+# homepage = "https://github.com/walkloud/hugo-texademic"
+
+# demosite = ""
+
+tags = ["blog", "clean", "latex", "light", "minimal", "responsive", "simple", "academic"]
+features = ["blog", "postcss", "comments", "google analytics"]
+
+[author]
+    name = "André Walker-Loud"
+    homepage = "https://c51.lbl.gov/~walkloud/work_home/"
+
+[original]
+    name = "Michael Neuper"
+    homepage = "https://michaelneuper.com"
+    
