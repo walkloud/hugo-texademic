@@ -1,0 +1,9 @@
+content/
+hugo.toml
+public/
+resources/_gen/
+node_modules/
+assets/jsconfig.json
+hugo_stats.json
+.hugo_build.lock
+.DS_Store
