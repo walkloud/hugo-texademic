@@ -1,11 +1,10 @@
 baseURL = "https://walkloud.github.io/hugo-texademic/"
-disqusShortname = ""
 enableGitInfo = false # true: page modification date set by last git commit
 enableRobotsTXT = true
 hasCJKLanguage = true
 languageCode = "en"
 rssLimit = 10
-title = "TeXaDemic"
+title = "tab-title"
 
 [pagination]
 pagerSize = 5
@@ -15,7 +14,7 @@ tags = "tags"
 categories = "categories"
 
 [params]
-title="TeXaDemic"
+title="<GROUP_NAME> Collaboration"
 author = "André Walker-Loud"
 description = "TeXaDemic - A LaTeX-style hugo theme for personal and group academic sites"
 footnote = """

@@ -1,4 +1,5 @@
-content/
+/content/
+/config/
 hugo.toml
 public/
 resources/_gen/
