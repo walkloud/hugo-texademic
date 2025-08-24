@@ -1,4 +1,3 @@
-title="TeXaDemic"
 description = "TeXaDemic - A LaTeX-style hugo theme with the gruvbox color scheme for personal and group academics sites"
 footnote = """
 Powered by  <a class=link href=https://gohugo.io target=_blank rel=noopener>Hugo</a> | 
@@ -18,22 +17,6 @@ math = true
 enableDuckDuckGoSearchBox = true
 numberedSubtitles = true
 enableInlineShortcodes = true
-
-[buymeacoffee]
-code = """
-<script data-name="BMC-Widget" 
-    data-cfasync="true" 
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
-    data-id="loudwalker" 
-    data-description="Like what I do? Buy me a coffee!" 
-    data-message="" 
-    data-color="#d79921" 
-    data-position="Right" 
-    data-x_margin="18" 
-    data-y_margin="18"
-    crossorigin="anonymous">
-</script>
-"""
 
 [sharingbuttons]
 facebook = true
