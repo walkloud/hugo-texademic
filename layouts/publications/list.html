@@ -40,12 +40,15 @@
       <li>
         <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a>
       </li>
+      <details>
+        <summary>Abstract</summary>
+          <div>
+            {{ .Content }}
+          </div>
+      </details>
       {{ end }}
     </ul>
   </div>
   {{ end }}
-  <div class="post-group">
-    <h3>...</h3>
-  </div>
 </main>
 {{ end }}
