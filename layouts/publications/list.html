@@ -30,6 +30,7 @@
     <h3>{{ .Key }}</h3>
     <ul>
       {{ range .Pages }}
+      <div style="border: 1px solid var(--fg); margin:10px; padding:10px;">
       <li>
         <a class="link" href="{{ .RelPermalink }}">{{ .Title }}</a>
         <time>{{ .PublishDate.Format .Site.Params.dateFormat }}</time>
@@ -38,7 +39,18 @@
         {{ delimit .Params.authors ", " }}
       </li>
       <li>
-        <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a>
+        <p>
+        {{ if isset .Params "journal" }}
+          {{ if .Params.doi }}
+            <a class="link" href="{{ .Params.doi }}" target="_blank">{{ .Params.journal }}</a>
+          {{ else }}
+            {{ .Params.journal }}
+          {{ end }}
+          [ <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a> ]
+        {{ else }}
+          <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a>
+        {{ end }}
+        </p>
       </li>
       <details>
         <summary>Abstract</summary>
@@ -46,6 +58,7 @@
             {{ .Content }}
           </div>
       </details>
+      </div>
       {{ end }}
     </ul>
   </div>
