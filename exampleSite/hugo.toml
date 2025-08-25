@@ -75,7 +75,7 @@ code = """
     weight = 40
 [[menus.main]]
     name = 'Publications'
-    pageRef = '/posts'
+    pageRef = '/publications'
     weight = 50
 [[menus.main]]
     name = 'Software'
