@@ -66,20 +66,20 @@ code = """
     pageRef = '/about'
     weight = 20
 [[menus.main]]
+    name = 'News'
+    pageRef = '/news'
+    weight = 30
+[[menus.main]]
     name = 'Members'
     pageRef = '/members'
-    weight = 30
+    weight = 40
 [[menus.main]]
     name = 'Publications'
     pageRef = '/posts'
-    weight = 40
+    weight = 50
 [[menus.main]]
     name = 'Software'
     pageRef = '/software'
-    weight = 50
-[[menus.main]]
-    name = 'News'
-    pageRef = '/news'
     weight = 60
 [[menus.main]]
     name = 'Features'

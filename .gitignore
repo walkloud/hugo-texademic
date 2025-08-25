@@ -6,5 +6,6 @@ resources/_gen/
 node_modules/
 assets/jsconfig.json
 hugo_stats.json
+package-lock.json
 .hugo_build.lock
 .DS_Store
