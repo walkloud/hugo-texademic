@@ -11,7 +11,6 @@ This theme started from [TeXify3](https://github.com/michaelneuper/hugo-texify3)
 ```
 npm install autoprefixer
 npm install postcss-import
-npm install giscus
 ```
 
 I wanted to create a theme that is useful for my interests in creating a static site for an academic group and an individual.
