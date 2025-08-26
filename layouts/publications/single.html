@@ -1,0 +1,34 @@
+{{ define "head" }}
+{{ $options := dict "transpiler" "dartsass" "targetPath" "css/single.css" }}
+{{ with resources.Get "sass/layouts/single.scss" | toCSS $options | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+{{ with resources.Get "sass/layouts/sharingbuttons.scss" | toCSS $options | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+{{ end }}
+
+{{ define "main" }}
+<main id="main" class="publications">
+  <div class="post-heading">
+    <h2 class="post-title">{{ .Title }}</h2>
+    <h4 class="post-title">{{ delimit .Params.authors ", " }}</h4>
+    <p>
+      {{ if isset .Params "journal" }}
+          {{ if .Params.doi }}
+            <a class="link" href="{{ .Params.doi }}" target="_blank">{{ .Params.journal }}</a>
+          {{ else }}
+            {{ .Params.journal }}
+          {{ end }}
+          [ <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a> ]
+        {{ else }}
+          <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a>
+        {{ end }}
+    </p>
+  </div>
+  <p>
+    {{ .Content }}
+  </p>
+  
+</main>
+{{ end }}
