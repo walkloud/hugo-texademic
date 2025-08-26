@@ -40,7 +40,7 @@
       </li>
       <li>
         <p>
-        {{ if isset .Params "journal" }}
+        {{ if .Params.journal }}
           {{ if .Params.doi }}
             <a class="link" href="{{ .Params.doi }}" target="_blank">{{ .Params.journal }}</a>
           {{ else }}
