@@ -16,17 +16,24 @@ npm install postcss-import
 I wanted to create a theme that is useful for my interests in creating a static site for an academic group and an individual.
 
 
-## Features
-
-
 ## Installation
 
+## Usage
+
+### Collaboration Page
+
+#### Members
+Place portraits in your `assets/images` folder.  By storing images here, they are only copied to public if they are referenced by your content.  See this [hugo solution](https://discourse.gohugo.io/t/re-markdown-style-images-with-full-path-when-baseurl-includes-subdirectory/55930) for advice on placing images.
+
+## Features
 
 ## Acknowledgement
 
 The following software inspires the design of this theme:
 
 - <https://github.com/michaelneuper/hugo-texify3>
+
+- [Help from `jmooring`](https://discourse.gohugo.io/t/re-markdown-style-images-with-full-path-when-baseurl-includes-subdirectory/55930)
 
 ## Support
 

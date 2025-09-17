@@ -1,5 +1,6 @@
 /content/
 /config/
+/assets/
 hugo.toml
 public/
 resources/_gen/

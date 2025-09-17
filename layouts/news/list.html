@@ -33,8 +33,10 @@
       <div style="border: 1px solid var(--fg); margin:10px; padding:10px;">
       <li>
         <a class="link" href="{{ .RelPermalink }}">{{ .Title }}</a>
-        {{ if .Params.image }}
-          <img src="{{ .Params.image }}" width="10%">
+        {{ with .Params.image }}
+          {{ with resources.Get . }}
+            <img src="{{ .RelPermalink }}" width="10%">
+          {{ end }}
         {{ end }}
         <time>{{ .PublishDate.Format .Site.Params.dateFormat }}</time>
       </li>
