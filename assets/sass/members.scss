@@ -1,0 +1,48 @@
+#profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    text-align: center; 
+    padding: 30px 10px;
+    position: relative;
+    text-align: center;
+}
+
+.portrait {
+    background-image: url('../images/portrait.jpg');
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+}
+
+.small-portrait {
+    background-image: url('../images/portrait.jpg');
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+}
+
+.portrait-title h2 {
+    font-size: 1.75em;
+    text-align: center;
+    font-weight: 400;
+    color: #000000;
+    margin: 20px 0 10px 0;
+}
+
+.portrait-title h3 {
+    font-size: 1.0em;
+    font-weight: 400;
+    text-align: center;
+    color: #AAAAAA;
+    margin: 5px 0 10px 0;
+}

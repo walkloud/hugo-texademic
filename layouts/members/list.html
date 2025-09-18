@@ -1,0 +1,24 @@
+{{ define "head" }}
+{{ $options := dict "transpiler" "dartsass" "targetPath" "css/list.css" }}
+{{ with resources.Get "sass/layouts/list.scss" | toCSS $options | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+{{ end }}
+
+{{ define "main" }}
+<main id="main" class="archive">
+  {{ $pages := where .Data.Pages "Type" "members" }}
+
+  {{/* SENIORS */}}
+  {{ $seniors := where $pages "Params.position" "senior" }}
+  {{ if gt (len $seniors) 0 }}
+    <div class="container">
+      <h1>Faculty and Staff</h1>
+      {{ range sort $seniors "Params.last_name" "asc" }}
+        {{ partial "member" . }}
+      {{ end }}
+    </div>
+  {{ end }}
+
+</main>
+{{ end }}
