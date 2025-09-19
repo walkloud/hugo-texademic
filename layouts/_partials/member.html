@@ -7,6 +7,15 @@
           </div>
         </a>
       {{ end }}
+    {{ else }}
+        {{ with .Site.Params.default_portrait }}
+          {{ with resources.Get . }}
+            <a href="{{ .Permalink }}">
+              <div class="small-portrait" itemprop="image" style="background-image: url('{{ .RelPermalink }}');">
+              </div>
+            </a>
+          {{ end }}
+        {{ end }}
     {{ end }}
     <div class="portrait-title">
       <h3 itemprop="name"> 

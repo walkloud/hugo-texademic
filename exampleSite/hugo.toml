@@ -14,22 +14,23 @@ tags = "tags"
 categories = "categories"
 
 [params]
-title="<GROUP_NAME> Collaboration"
-author = "André Walker-Loud"
-description = "TeXaDemic - A LaTeX-style hugo theme for personal and group academic sites"
-footnote = """
-Powered by  <a class=link href=https://gohugo.io target=_blank rel=noopener>Hugo</a> | 
-Theme <a class=link href=https://github.com/walkloud/hugo-texademic target=_blank rel=noopener>TeXaDemic</a>
-"""
-customCSS = []
-customJS = []
-dateFormat = "2 January 2006"
-emphasisWithDots = true
-toc = true
-rootFontSize = "105%"
-math = true
-enableDuckDuckGoSearchBox = true
-numberedSubtitles = true
+    title="<GROUP_NAME> Collaboration"
+    author = "André Walker-Loud"
+    description = "TeXaDemic - A LaTeX-style hugo theme for personal and group academic sites"
+    footnote = """
+    Powered by  <a class=link href=https://gohugo.io target=_blank rel=noopener>Hugo</a> | 
+    Theme <a class=link href=https://github.com/walkloud/hugo-texademic target=_blank rel=noopener>TeXaDemic</a>
+    """
+    customCSS = []
+    customJS = []
+    dateFormat = "2 January 2006"
+    emphasisWithDots = true
+    toc = true
+    rootFontSize = "105%"
+    math = true
+    enableDuckDuckGoSearchBox = true
+    numberedSubtitles = true
+    default_portrait = "images/anonymous_person.png"
 
 [params.buymeacoffee]
 code = """
