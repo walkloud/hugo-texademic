@@ -10,11 +10,44 @@
   {{ $pages := where .Data.Pages "Type" "members" }}
 
   {{/* SENIORS */}}
-  {{ $seniors := where $pages "Params.position" "senior" }}
-  {{ if gt (len $seniors) 0 }}
+  {{ $members := where $pages "Params.position" "senior" }}
+  {{ if gt (len $members) 0 }}
     <div class="container">
       <h1>Faculty and Staff</h1>
-      {{ range sort $seniors "Params.last_name" "asc" }}
+      {{ range sort $members "Params.last_name" "asc" }}
+        {{ partial "member" . }}
+      {{ end }}
+    </div>
+  {{ end }}
+
+  {{/* PostDocs */}}
+  {{ $members := where $pages "Params.position" "postdoc" }}
+  {{ if gt (len $members) 0 }}
+    <div class="container">
+      <h1>Postdocs</h1>
+      {{ range sort $members "Params.last_name" "asc" }}
+        {{ partial "member" . }}
+      {{ end }}
+    </div>
+  {{ end }}
+
+  {{/* GradStudents */}}
+  {{ $members := where $pages "Params.position" "gradstudent" }}
+  {{ if gt (len $members) 0 }}
+    <div class="container">
+      <h1>Grad Students</h1>
+      {{ range sort $members "Params.last_name" "asc" }}
+        {{ partial "member" . }}
+      {{ end }}
+    </div>
+  {{ end }}
+
+  {{/* Under Grads */}}
+  {{ $members := where $pages "Params.position" "undergrad" }}
+  {{ if gt (len $members) 0 }}
+    <div class="container">
+      <h1>Undergraduate Students</h1>
+      {{ range sort $members "Params.last_name" "asc" }}
         {{ partial "member" . }}
       {{ end }}
     </div>
