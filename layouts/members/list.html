@@ -1,55 +1,63 @@
 {{ define "head" }}
-{{ $options := dict "transpiler" "dartsass" "targetPath" "css/list.css" }}
-{{ with resources.Get "sass/layouts/list.scss" | toCSS $options | postCSS | minify | fingerprint }}
+{{ $options := dict "transpiler" "dartsass" "targetPath" "css/members.css" }}
+{{ with resources.Get "sass/members.scss" | toCSS $options | postCSS | minify | fingerprint }}
   <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
 {{ end }}
 {{ end }}
 
 {{ define "main" }}
-<main id="main" class="archive">
+<main id="main">
   {{ $pages := where .Data.Pages "Type" "members" }}
 
   {{/* SENIORS */}}
   {{ $members := where $pages "Params.position" "senior" }}
   {{ if gt (len $members) 0 }}
-    <div class="container">
+    <div class="container-fluid">
       <h1>Faculty and Staff</h1>
-      {{ range sort $members "Params.last_name" "asc" }}
-        {{ partial "member" . }}
-      {{ end }}
+      <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        {{ range sort $members "Params.last_name" "asc" }}
+          {{ partial "member" . }}
+        {{ end }}
+      </div>
     </div>
   {{ end }}
 
   {{/* PostDocs */}}
   {{ $members := where $pages "Params.position" "postdoc" }}
   {{ if gt (len $members) 0 }}
-    <div class="container">
+    <div class="container-fluid">
       <h1>Postdocs</h1>
-      {{ range sort $members "Params.last_name" "asc" }}
-        {{ partial "member" . }}
-      {{ end }}
+      <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        {{ range sort $members "Params.last_name" "asc" }}
+          {{ partial "member" . }}
+        {{ end }}
+      </div>
     </div>
   {{ end }}
 
   {{/* GradStudents */}}
   {{ $members := where $pages "Params.position" "gradstudent" }}
   {{ if gt (len $members) 0 }}
-    <div class="container">
+    <div class="container-fluid">
       <h1>Grad Students</h1>
-      {{ range sort $members "Params.last_name" "asc" }}
-        {{ partial "member" . }}
-      {{ end }}
+      <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        {{ range sort $members "Params.last_name" "asc" }}
+          {{ partial "member" . }}
+        {{ end }}
+      </div>
     </div>
   {{ end }}
 
   {{/* Under Grads */}}
   {{ $members := where $pages "Params.position" "undergrad" }}
   {{ if gt (len $members) 0 }}
-    <div class="container">
+    <div class="container-fluid">
       <h1>Undergraduate Students</h1>
-      {{ range sort $members "Params.last_name" "asc" }}
-        {{ partial "member" . }}
-      {{ end }}
+      <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        {{ range sort $members "Params.last_name" "asc" }}
+          {{ partial "member" . }}
+        {{ end }}
+      </div>
     </div>
   {{ end }}
 
