@@ -1,0 +1,62 @@
+{{ define "head" }}
+{{ $options := dict "transpiler" "dartsass" "targetPath" "css/single.css" }}
+{{ with resources.Get "sass/layouts/single.scss" | toCSS $options | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+{{ with resources.Get "sass/layouts/sharingbuttons.scss" | toCSS $options | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+{{ end }}
+
+{{ define "main" }}
+<main id="main">
+<div class="row row-cols-auto">
+  {{/* Portrait plus institute and contact info */}}
+  <div class="col">
+    <div class="portrait">
+      {{ with .Params.portrait }}
+        {{ with resources.Get . }}
+          <a href="{{ .Permalink }}">
+            <div class="portrait" itemprop="image" style="background-image: url('{{ .RelPermalink }}');">
+            </div>
+          </a>
+        {{ end }}
+      {{ else }}
+        {{ with .Site.Params.default_portrait }}
+          {{ with resources.Get . }}
+            <a href="{{ .Permalink }}">
+              <div class="small-portrait" itemprop="image" style="background-image: url('{{ .RelPermalink }}');">
+              </div>
+            </a>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
+    <div class="portrait-title">
+      <h2>{{ .Params.first_name }} {{ .Params.last_name }}</h2>
+    </div>
+    <div class="portrait-title">
+      <h5>{{ .Params.title }}, {{ .Params.institute }}</h5>
+    </div>
+    <div class="portrait-title">
+      <h5><a href="{{ .Params.website }}" target="_blank">Personal website</a></h5>
+    </div>
+    <div class="portrait-title">
+      <h5><a href="mailto:{{ .Params.email }}"><i class="fa fa-envelope big-icon" area-hidden="true"></i>
+      {{ .Params.email }}</a></h5>
+    </div>
+    <div class="portrait-title">
+      <h5><i class="fa fa-phone big-icon" area-hidden="true"></i>
+      {{ .Params.phone }}</h5>
+    </div>
+  </div>
+
+  {{/* About in content of md file */}}
+  <div class="col-8">
+    <p>
+      {{ .Content }}
+    </p>
+  </div>
+</div>
+</main>
+{{ end }}

@@ -34,14 +34,29 @@
     font-size: 1.75em;
     text-align: center;
     font-weight: 400;
-    color: #000000;
     margin: 20px 0 10px 0;
 }
 
-.portrait-title h3 {
+.portrait-title h5 {
     font-size: 1.0em;
     font-weight: 400;
     text-align: center;
-    color: #AAAAAA;
     margin: 5px 0 10px 0;
+}
+
+
+.phone {
+    margin-top: 10px; /* Ajusta el espacio sobre el número de teléfono */
+    font-size: 20px; /* Ajusta el tamaño del texto del número de teléfono */
+    display: flex;
+    align-items: center; /* Alinea verticalmente el ícono y el texto */
+}
+
+.phone i {
+    margin-right: 10px; /* Ajusta el espacio entre el ícono y el número */
+    color: #4aa7dd; /* Azul cielo */
+}
+
+.phone a {
+    margin-top: -3px; /* Ajusta este valor según sea necesario */
 }
