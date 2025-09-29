@@ -1,27 +1,25 @@
-<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
-  <div id="profile">
-    {{ with .Params.portrait }}
-      {{ with resources.Get . }}
-        <a href="{{ .Permalink }}">
-          <div class="small-portrait" itemprop="image" style="background-image: url('{{ .RelPermalink }}');">
-          </div>
-        </a>
-      {{ end }}
-    {{ else }}
-        {{ with .Site.Params.default_portrait }}
-          {{ with resources.Get . }}
-            <a href="{{ .Permalink }}">
-              <div class="small-portrait" itemprop="image" style="background-image: url('{{ .RelPermalink }}');">
-              </div>
-            </a>
-          {{ end }}
-        {{ end }}
+<div class="col profile">
+  {{ with .Params.portrait }}
+    {{ with resources.Get . }}
+      <a href="{{ .Permalink }}">
+        <div class="small-portrait" itemprop="image" style="background-image: url('{{ .RelPermalink }}');">
+        </div>
+      </a>
     {{ end }}
-    <div class="portrait-title">
-      <h3 itemprop="name"> 
-        <a href="{{ .Permalink }}"> {{ .Params.first_name }} {{ .Params.last_name }}</a>
-      </h3>
-      <h5>{{ .Params.institute }}</h5>
-    </div>
+  {{ else }}
+      {{ with .Site.Params.default_portrait }}
+        {{ with resources.Get . }}
+          <a href="{{ .Permalink }}">
+            <div class="small-portrait" itemprop="image" style="background-image: url('{{ .RelPermalink }}');">
+            </div>
+          </a>
+        {{ end }}
+      {{ end }}
+  {{ end }}
+  <div class="portrait-title">
+    <h3 itemprop="name"> 
+      <a href="{{ .Permalink }}"> {{ .Params.first_name }} {{ .Params.last_name }}</a>
+    </h3>
+    <h5>{{ .Params.institute }}</h5>
   </div>
 </div>

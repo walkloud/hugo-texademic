@@ -1,6 +1,7 @@
 /content/
 /config/
 /assets/images/
+/assets/sass/bootstrap/
 hugo.toml
 public/
 resources/_gen/
