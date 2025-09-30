@@ -13,7 +13,7 @@
   {{/* HPC Software */}}
   {{ $libs := where $pages "Params.software_type" "hpc" }}
   {{ if gt (len $libs) 0 }}
-    <h1>HPC Software</h1>
+    <h3>HPC Software</h3>
     {{ range sort $libs "Params.title" "asc" }}
       <div class="row row-cols-auto">
         <div class="col">
@@ -32,7 +32,7 @@
   {{/* Analysis Software */}}
   {{ $libs := where $pages "Params.software_type" "analysis" }}
   {{ if gt (len $libs) 0 }}
-    <h1>Analysis Software</h1>
+    <h3>Analysis Software</h3>
     {{ range sort $libs "Params.title" "asc" }}
       <div class="row row-cols-auto">
         <div class="col">
