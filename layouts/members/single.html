@@ -41,12 +41,25 @@
     <div class="portrait-title">
       <h5><a href="{{ .Params.website }}" target="_blank">Personal website</a></h5>
     </div>
-    <div class="portrait-title">
-      <h5>
-        <i class="fas fa-envelope big-icon" area-hidden="true"></i>
-        <a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a>
-      </h5>
+    {{ if .Params.social }}
+    <div id="social-icons">
+      <ul>
+        {{ range .Params.social }}
+          <li>
+            <a href="{{ .link | safeHTML }}" target="blank">
+            {{ if eq .source "ai" }}
+              <i class="ai ai-{{ .icon }} big-icon fa-lg" aria-hidden="true"></i>
+            {{ else if eq .source "fab" }}
+              <i class="fab fa-{{ .icon }} big-icon fa-lg" aria-hidden="true"></i>
+            {{ else if eq .source "fa" }}
+              <i class="fa fa-{{ .icon }} big-icon fa-lg" aria-hidden="true"></i>
+            {{ end }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
     </div>
+    {{ end }}
     <div class="portrait-title">
       <h5>
         <i class="fa fa-phone big-icon" area-hidden="true"></i>
