@@ -12,6 +12,7 @@ pagerSize = 5
 [taxonomies]
 tags = "tags"
 categories = "categories"
+presenter = "presenter"
 
 [params]
     title="<GROUP_NAME> Collaboration"
@@ -79,10 +80,14 @@ code = """
     pageRef = '/publications'
     weight = 50
 [[menus.main]]
+    name = 'Talks'
+    pageRef = '/talks'
+    weight = 60
+[[menus.main]]
     name = 'Software'
     pageRef = '/software'
-    weight = 60
+    weight = 70
 [[menus.main]]
     name = 'Features'
     pageRef = '/features'
-    weight = 70
+    weight = 80

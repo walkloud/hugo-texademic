@@ -1,0 +1,40 @@
+<div style="border: 1px solid var(--fg); margin:10px; padding:10px;">
+    <div class="row row-cols-auto">
+        <div class="col-3 text-start">
+            {{ .Params.presenter }}
+        </div>
+        <div class="col-4 text-start">
+            {{ if .Params.slides_url }}
+                <a href="{{ .Params.slides_url | safeHTML }}" target="blank">
+                    {{ .Params.title }}
+                </a>
+            {{ else }}
+                {{ .Params.title }}
+            {{ end }}
+        </div>
+        <div class="col-2">
+        {{ with .Params.conf_image }}
+            {{ with resources.Get . }}
+                {{ if $.Params.conf_url }}
+                    <a href="{{ $.Params.conf_url | safeHTML }}" target="blank">
+                        <img src="{{ .RelPermalink }}" width="80%">
+                    </a>
+                {{ else }}
+                    <img src="{{ .RelPermalink }}" width="70%">
+                {{ end }}
+            {{ end }}
+        {{ else }}
+            {{ if $.Params.conf_url }}
+                <a href="{{ $.Params.conf_url | safeHTML }}" target="blank">
+                    {{ $.Params.conf }}
+                </a>
+            {{ else }}
+                {{ $.Params.conf }}
+            {{ end }}
+        {{ end }}
+        </div>
+        <div class="col-3">
+            <time>{{ .PublishDate.Format .Site.Params.dateFormat }}</time>
+        </div>
+    </div>
+</div>
