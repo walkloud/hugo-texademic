@@ -45,13 +45,20 @@
     <div id="social-icons">
       <ul>
         {{ range .Params.social }}
+          {{ $isemail := eq .icon "envelope" }}
           <li>
-            <a href="{{ .link | safeHTML }}" target="blank">
+            {{ if $isemail }}
+              <a href="mailto:{{ $.Params.email }}">
+                <i class="fa fa-{{ .icon }} big-icon fa-lg" aria-hidden="true"></i>
+              </a>
+            {{ else }}
+              <a href="{{ .link | safeHTML }}" target="blank">
+            {{ end }}
             {{ if eq .source "ai" }}
               <i class="ai ai-{{ .icon }} big-icon fa-lg" aria-hidden="true"></i>
             {{ else if eq .source "fab" }}
               <i class="fab fa-{{ .icon }} big-icon fa-lg" aria-hidden="true"></i>
-            {{ else if eq .source "fa" }}
+            {{ else if and (eq .source "fa") (not $isemail) }}
               <i class="fa fa-{{ .icon }} big-icon fa-lg" aria-hidden="true"></i>
             {{ end }}
             </a>
