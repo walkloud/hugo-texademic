@@ -24,7 +24,7 @@
     </form>
   </div>
   {{ end }}  
-  {{ $pages := where .Data.Pages "Type" "news" }}
+  {{ $pages := where .Site.RegularPages "Type" "news" }}
   {{ range $pages.GroupByDate "2006" }}
   <div class="post-group">
     <h3>{{ .Key }}</h3>

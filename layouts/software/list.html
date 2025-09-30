@@ -1,0 +1,54 @@
+{{ define "head" }}
+{{ $options := dict "transpiler" "dartsass" "targetPath" "css/list.css" }}
+{{ with resources.Get "sass/layouts/list.scss" | toCSS $options | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+{{ end }}
+
+{{ define "main" }}
+<main id="main">
+
+  {{ $pages := where .Site.RegularPages "Type" "software" }}
+
+  {{/* HPC Software */}}
+  {{ $libs := where $pages "Params.software_type" "hpc" }}
+  {{ if gt (len $libs) 0 }}
+    <h1>HPC Software</h1>
+    {{ range sort $libs "Params.title" "asc" }}
+      <div class="row row-cols-auto">
+        <div class="col">
+          <a href="{{ .Permalink }}">{{ .Params.title }}</a>
+        </div>
+        <div class="col">
+          <a href="{{ .Params.external_url }}" target="_blank">{{ .Params.external_url }}</a>
+        </div>
+        <div>
+          <h5>{{ .Params.summary }}</h5>
+        </div>
+      </div>
+    {{ end }}
+  {{ end }}
+
+  {{/* Analysis Software */}}
+  {{ $libs := where $pages "Params.software_type" "analysis" }}
+  {{ if gt (len $libs) 0 }}
+    <h1>Analysis Software</h1>
+    {{ range sort $libs "Params.title" "asc" }}
+      <div class="row row-cols-auto">
+        <div class="col">
+          <a href="{{ .Permalink }}">{{ .Params.title }}</a>
+        </div>
+        <div class="col">
+          <a href="{{ .Params.external_url }}" target="_blank">{{ .Params.external_url }}</a>
+        </div>
+        <div>
+          <h5>{{ .Params.summary }}</h5>
+        </div>
+      </div>
+    {{ end }}
+  {{ end }}
+
+
+
+</main>
+{{ end }}

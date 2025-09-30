@@ -6,7 +6,7 @@
 {{ end }}
 
 {{ define "main" }}
-<main id="main" class="archive">
+<main id="main">
   {{ if .Site.Params.enableDuckDuckGoSearchBox }}
   <div id="searchbox">
     <form method="get" id="ddgSearch" target="_blank" action="https://duckduckgo.com/">
@@ -24,7 +24,7 @@
     </form>
   </div>
   {{ end }}  
-  {{ $pages := where .Data.Pages "Type" "publications" }}
+  {{ $pages := where .Site.RegularPages "Type" "publications" }}
   {{ range $pages.GroupByDate "2006" }}
   <div class="post-group">
     <h3>{{ .Key }}</h3>

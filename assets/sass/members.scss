@@ -46,17 +46,19 @@
 
 
 .phone {
-    margin-top: 10px; /* Ajusta el espacio sobre el número de teléfono */
-    font-size: 20px; /* Ajusta el tamaño del texto del número de teléfono */
+    margin-top: 10px;
+    font-size: 20px;
     display: flex;
-    align-items: center; /* Alinea verticalmente el ícono y el texto */
+    align-items: center;
 }
 
 .phone i {
-    margin-right: 10px; /* Ajusta el espacio entre el ícono y el número */
-    color: #4aa7dd; /* Azul cielo */
+    font-size: 1.0em;
+    margin-right: 10px;
+    text-align: center;
+    color: #4aa7dd;
 }
 
 .phone a {
-    margin-top: -3px; /* Ajusta este valor según sea necesario */
+    margin-top: -3px;
 }
