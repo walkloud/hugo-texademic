@@ -14,7 +14,7 @@
 
     {{/* Make adding news and how much controllable in config file */}}
     <h4 style="margin-top: 1cm">Latest News</h4>
-    {{ $allowedTypes := slice "news" "publications" "talks" }}
+    {{ $allowedTypes := slice "news" "publications" }}
     {{ range ( where site.RegularPages "Type" "in" $allowedTypes | first 5 ) }}
       <div class="row align-items-start">
         <div class="col-sm-3">
