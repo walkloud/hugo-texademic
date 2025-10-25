@@ -11,7 +11,6 @@ phone: # your work phone number
 social: # all are optional
     - icon: "envelope"
       source: "fa"
-      link: # no link needed for email
     - icon: "inspire"
       source: "ai"
       link: "https://inspirehep.net/authors/1021450"
