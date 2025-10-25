@@ -67,12 +67,14 @@
       </ul>
     </div>
     {{ end }}
-    <div class="portrait-title">
-      <h5>
-        <i class="fa fa-phone big-icon" area-hidden="true"></i>
-        {{ .Params.phone }}
-      </h5>
-    </div>
+    {{ with .Params.phone }}
+      <div class="portrait-title">
+        <h5>
+          <i class="fa fa-phone big-icon" area-hidden="true"></i>
+          {{ . }}
+        </h5>
+      </div>
+    {{ end }}
   </div>
 
   {{/* About in content of md file */}}
