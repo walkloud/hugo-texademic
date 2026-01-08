@@ -12,7 +12,7 @@
   {{ $members := where $pages "Params.position" "postdoc" }}
   {{ if gt (len $members) 0 }}
     <div class="container-fluid">
-      <h1>Faculty and Staff</h1>
+      <h1>Postdocs</h1>
       <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
         {{ range sort $members "Params.last_name" "asc" }}
           {{ partial "member" . }}
