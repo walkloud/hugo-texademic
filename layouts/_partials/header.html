@@ -4,12 +4,25 @@
 <header id="header">
   <nav>
     {{ range .Site.Menus.main }}
-    <span>
-      {{ if .Pre }}
-        <span class="icon">{{ .Pre | safeHTML }}</span>
+      {{ if .HasChildren }}
+        <div class="dropdown">
+          <span class="nav-item">
+            {{ if .Pre }}<span class="icon">{{ .Pre | safeHTML }}</span>{{ end }}
+            <a class="link" href="{{ .URL | safeURL }}">{{ .Name }} <span class="arrow">▾</span></a>
+          </span>
+
+          <div class="dropdown-content">
+            {{ range .Children }}
+              <a class="link sub-link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
+            {{ end }}
+          </div>
+        </div>
+      {{ else }}
+        <span>
+          {{ if .Pre }}<span class="icon">{{ .Pre | safeHTML }}</span>{{ end }}
+          <a class="link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
+        </span>
       {{ end }}
-      <a class="link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
-    </span>
     {{ end }}
     <button id="dark-mode-toggle" class="nav-bar-item">
         <svg width="2rem" height="2rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496">

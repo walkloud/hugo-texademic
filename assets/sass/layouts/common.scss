@@ -267,3 +267,44 @@ main {
 .row {
   margin-left: 2rem;
 }
+
+/* Container for the dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Hidden by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--bg);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+  top: 100%;
+  left: 0;
+  flex-direction: column;
+}
+
+/* Show the menu on hover */
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+/* Sub-link styling */
+.sub-link {
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.sub-link:hover {
+  background-color: var(--blue); /* Hover effect for sub-items */
+}
+
+/* Optional arrow styling */
+.arrow {
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
