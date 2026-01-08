@@ -9,7 +9,7 @@
 <main id="main">
   {{ $pages := where .Site.RegularPages "Type" "members" }}
 
-  {{ $members := where $pages "Params.position" "postdoc" }}
+  {{ $members := where $pages "Params.former" "==" true }}
   {{ if gt (len $members) 0 }}
     <div class="container-fluid">
       <h1>Faculty and Staff</h1>
