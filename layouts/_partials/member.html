@@ -1,5 +1,10 @@
+{{/* $page is normally the member page passed to a partial as "."
+     and $title is a bool to tell us wether to show the persons title */}}
+{{ $page := .context }}
+{{ $title := .title }}
+
 <div class="col profile">
-  {{ with .Params.portrait }}
+  {{ with $page.Params.portrait }}
     {{ with resources.Get . }}
       <a href="{{ .Permalink }}">
         <div class="small-portrait" itemprop="image" style="background-image: url('{{ .RelPermalink }}');">
@@ -18,8 +23,13 @@
   {{ end }}
   <div class="portrait-title">
     <h3 itemprop="name"> 
-      <a href="{{ .Permalink }}"> {{ .Params.first_name }} {{ .Params.last_name }}</a>
+      <a href="{{ .Permalink }}"> {{ $page.Params.first_name }} {{ $page.Params.last_name }}</a>
     </h3>
-    <h5>{{ .Params.institute }}</h5>
+    {{ if $title }}
+      {{ with $page.Params.title }}
+        <h5>{{ . }}</h5>
+      {{ end }}
+    {{ end }}
+    <h5>{{ $page.Params.institute }}</h5>
   </div>
 </div>
