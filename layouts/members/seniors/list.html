@@ -15,7 +15,7 @@
       <h1>Faculty and Staff</h1>
       <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
         {{ range sort $members "Params.last_name" "asc" }}
-          {{ partial "member" . }}
+            {{ partial "member" (dict "context" . "title" false) }}
         {{ end }}
       </div>
     </div>
