@@ -9,7 +9,7 @@
 <main id="main">
   {{ $pages := where .Site.RegularPages "Type" "members" }}
 
-  {{ if not .Site.Params.memberClass }}
+  {{ with .Site.Params.memberClass }}
     {{/* let user specifiy whether to group members by "class" 
          default = false 
     */}}
