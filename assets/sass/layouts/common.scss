@@ -94,7 +94,9 @@ hr {
   right: 0;           // Stretches it across the full width
   z-index: 1000;      // Ensures it stays above all other content
 
-  background-color: var(--bg); // Important: Give it a background so content doesn't bleed through
+  background-color: rgba(var(--bg), 0.7); // Important: Give it a background so content doesn't bleed through
+  backdrop-filter: blur(10px);               // Blurs the content underneath
+  -webkit-backdrop-filter: blur(10px);
   padding: 1rem 0;             // Add some vertical breathing room
   box-shadow: 0 2px 10px rgba(0,0,0,0.1); // Optional: adds depth so it looks "above" the page
 
