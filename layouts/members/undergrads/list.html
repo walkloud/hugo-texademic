@@ -1,0 +1,25 @@
+{{ define "head" }}
+{{ $options := dict "transpiler" "dartsass" "targetPath" "css/members.css" }}
+{{ with resources.Get "sass/members.scss" | toCSS $options | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+{{ end }}
+
+{{ define "main" }}
+<main id="main">
+  {{ $pages := where .Site.RegularPages "Type" "members" }}
+
+  {{ $members := where $pages "Params.former" "==" true }}
+  {{ if gt (len $members) 0 }}
+    <div class="container-fluid">
+      <h1>Faculty and Staff</h1>
+      <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        {{ range sort $members "Params.last_name" "asc" }}
+          {{ partial "member" . }}
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+
+</main>
+{{ end }}
