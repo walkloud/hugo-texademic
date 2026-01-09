@@ -1,5 +1,6 @@
 {{/* $page is normally the member page passed to a partial as "."
-     and $title is a bool to tell us wether to show the persons title */}}
+     and $title is a bool to tell us wether to show the persons title.
+     This requires us to get .Params as $page.Params etc */}}
 {{ $page := .context }}
 {{ $title := .title }}
 
@@ -23,7 +24,7 @@
   {{ end }}
   <div class="portrait-title">
     <h3 itemprop="name"> 
-      <a href="{{ .Permalink }}"> {{ $page.Params.first_name }} {{ $page.Params.last_name }}</a>
+      <a href="{{ $page.RelPermalink }}"> {{ $page.Params.first_name }} {{ $page.Params.last_name }}</a>
     </h3>
     {{ if $title }}
       {{ with $page.Params.title }}
