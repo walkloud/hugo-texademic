@@ -175,12 +175,64 @@ hr {
         transform-origin: bottom left;
       }
     }
+
+    // MOBILE
+    @media screen and (max-width: $mobile-breakpoint) {
+      display: none; // Hide menu on mobile
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 1rem;
+      
+      & > span {
+        padding: 10px 0;
+      }
+    }
   }
 
   a,
   a:hover,
   a:visited {
     color: var(--fg1);
+  }
+
+  // MOBILE
+  #nav-toggle {
+    display: none; // Hidden by default (desktop)
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: var(--fg1);
+      transition: 0.3s;
+    }
+
+    @media screen and (max-width: $mobile-breakpoint) {
+      display: flex; // Show hamburger on mobile
+    }
+  }
+
+  // THE MAGIC: When the header has the .is-open class
+  &.is-open {
+    & > nav {
+      @media screen and (max-width: $mobile-breakpoint) {
+        display: flex; // Show the menu
+      }
+    }
+
+    // Optional: Turn hamburger into an 'X'
+    #nav-toggle {
+      .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+      .bar:nth-child(2) { opacity: 0; }
+      .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    }
   }
 }
 

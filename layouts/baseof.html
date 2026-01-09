@@ -94,6 +94,8 @@
 
   <!-- javascript -->
   <script src='{{ "js/script.js" | absURL }}' defer></script>
+  {{ $menuJs := resources.Get "js/menu.js" | minify | fingerprint }}
+  <script src="{{ $menuJs.RelPermalink }}" integrity="{{ $menuJs.Data.Integrity }}"></script>
 
   <!-- custom css -->
   {{ range .Site.Params.customCSS }}

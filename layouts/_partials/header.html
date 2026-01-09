@@ -2,6 +2,11 @@
 {{ $domain := $parsedUrl.Host }}
 {{ $domainWithoutWWW := replace $domain "www." "" }}
 <header id="header">
+  <button id="nav-toggle" aria-label="Toggle Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+  </button>
   <nav>
     {{ range .Site.Menus.main }}
       {{ if .HasChildren }}
