@@ -1,10 +1,13 @@
-{{/* $page is normally the member page passed to a partial as "."
-     and $title is a bool to tell us wether to show the persons title */}}
-{{ $page := .context }}
+{{/* This partial is called as {{ partial "member" (dict "context" . "title" true/false) }} }}
+     title is used as a bool to decide whether to list the members title or not given
+           how it is displayed.
+     In order to access the member page objects, we now have to prepend them with 
+     .context i.e. .Params -> .context.Params
+*/}}
 {{ $title := .title }}
 
 <div class="col profile">
-  {{ with $page.Params.portrait }}
+  {{ with .context.Params.portrait }}
     {{ with resources.Get . }}
       <a href="{{ .Permalink }}">
         <div class="small-portrait" itemprop="image" style="background-image: url('{{ .RelPermalink }}');">
@@ -23,13 +26,13 @@
   {{ end }}
   <div class="portrait-title">
     <h3 itemprop="name"> 
-      <a href="{{ .Permalink }}"> {{ $page.Params.first_name }} {{ $page.Params.last_name }}</a>
+      <a href="{{ .context.RelPermalink }}"> {{ .context.Params.first_name }} {{ .context.Params.last_name }}</a>
     </h3>
     {{ if $title }}
-      {{ with $page.Params.title }}
+      {{ with .context.Params.title }}
         <h5>{{ . }}</h5>
       {{ end }}
     {{ end }}
-    <h5>{{ $page.Params.institute }}</h5>
+    <h5>{{ .context.Params.institute }}</h5>
   </div>
 </div>
