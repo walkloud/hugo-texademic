@@ -1,0 +1,23 @@
+@use "sass:math";
+@use "../utils/variables" as *;
+
+@mixin lift-on-hover($distance: -5px) {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY($distance);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+}
+
+// for hover and lift effect
+@mixin lift-effect {
+  transition: $hover-transition;
+  box-shadow: $shadow-light;
+
+  &:hover {
+    transform: translateY($lift-distance);
+    box-shadow: $shadow-heavy;
+    cursor: pointer;
+  }
+}

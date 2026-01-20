@@ -1,0 +1,16 @@
+@use "sass:math";
+@use "../utils/variables" as *;
+
+// footer
+#footer {
+  color: var(--fg4);
+  align-items: center;
+  display: flex;
+  font-size: 0.9rem;
+  flex-direction: column;
+  margin-top: $margin;
+
+  & > .footnote {
+    text-align: center;
+  }
+}

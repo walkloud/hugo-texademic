@@ -1,0 +1,194 @@
+@use "sass:math";
+@use "../utils/variables" as *;
+
+// header
+#header {
+  position: fixed;    // Pins the header to the screen
+  top: 0;             // Aligns it to the very top
+  left: 0;            // Aligns it to the left
+  right: 0;           // Stretches it across the full width
+  z-index: 1000;      // Ensures it stays above all other content
+
+  background-color: rgba(var(--bg), 0.7); // Important: Give it a background so content doesn't bleed through
+  backdrop-filter: blur(10px);               // Blurs the content underneath
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1rem 0;             // Add some vertical breathing room
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); // Optional: adds depth so it looks "above" the page
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  & > h1 {
+    text-align: center;
+
+    @media screen and (min-width: $mobile-breakpoint) {
+      font-size: 2.8rem;
+    }
+  }
+
+  // Target the toggle specifically
+  #dark-mode-toggle {
+    position: absolute;
+    right: 20px; // Distance from the right edge of the header
+    top: 20px;   // Distance from the top edge of the header
+
+    background-color: var(--bg);
+    color: var(--fg);
+    border: none;
+    padding: 0.5rem;
+    border-radius: $radius;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    z-index: 10; // Ensures it stays on top of other elements
+    //margin-left: auto;
+    //top: calc(((4px + $margin) / 2) + 12.55px);
+    //right: $padding;
+
+    &:hover {
+      color: var(--fg1);
+    }
+
+    // Optional: Adjust position for mobile
+    @media screen and (max-width: $mobile-breakpoint) {
+      right: 10px;
+      top: 10px;
+    }
+  }
+
+  & > nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: $mobile-breakpoint;
+    margin-top: 10px;
+    width: 100%;
+
+    & > span > a {
+      font-size: 1.2rem;
+      color: var(--fg1);
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+
+      &:after {
+        background-color: var(--fg1);
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: $border;
+        bottom: 0;
+        left: 0;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+
+      &:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    }
+
+    // MOBILE
+    @media screen and (max-width: $mobile-breakpoint) {
+      display: none; // Hide menu on mobile
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 1rem;
+      
+      & > span {
+        padding: 10px 0;
+      }
+    }
+  }
+
+  a,
+  a:hover,
+  a:visited {
+    color: var(--fg1);
+  }
+
+  // MOBILE
+  #nav-toggle {
+    display: none; // Hidden by default (desktop)
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: var(--fg1);
+      transition: 0.3s;
+    }
+
+    @media screen and (max-width: $mobile-breakpoint) {
+      display: flex; // Show hamburger on mobile
+    }
+  }
+
+  // THE MAGIC: When the header has the .is-open class
+  &.is-open {
+    & > nav {
+      @media screen and (max-width: $mobile-breakpoint) {
+        display: flex; // Show the menu
+      }
+    }
+
+    // Optional: Turn hamburger into an 'X'
+    #nav-toggle {
+      .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+      .bar:nth-child(2) { opacity: 0; }
+      .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    }
+  }
+}
+
+
+/* Container for the dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Hidden by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--bg);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+  top: 100%;
+  left: 0;
+  flex-direction: column;
+}
+
+/* Show the menu on hover */
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+/* Sub-link styling */
+.sub-link {
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.sub-link:hover {
+  background-color: var(--blue); /* Hover effect for sub-items */
+}
+
+/* Optional arrow styling */
+.arrow {
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
