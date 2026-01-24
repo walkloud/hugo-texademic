@@ -22,17 +22,17 @@ a {
   text-decoration: none;
 
   &:link {
-    color: var(--blue);
+    color: var(--link);
   }
 
   &:hover,
   &:visited {
-    color: var(--blue-dim);
+    color: var(--link-visited);
   }
 }
 
 ::selection {
-  background-color: var(--blue);
+  background-color: var(--link);
   color: white;
 }
 
