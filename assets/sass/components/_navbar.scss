@@ -46,7 +46,7 @@
     //right: $padding;
 
     &:hover {
-      color: var(--fg1);
+      color: var(--fg_highlight);
     }
 
     // Optional: Adjust position for mobile
@@ -188,7 +188,7 @@
 }
 
 .sub-link:hover {
-  background-color: var(--link); /* Hover effect for sub-items */
+  background-color: var(--bg_highlight); /* Hover effect for sub-items */
 }
 
 /* Optional arrow styling */

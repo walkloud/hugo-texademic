@@ -1,26 +1,15 @@
 :root {
-  // bg_h: back_to_top hover
-  --bg_h: #b3b1b2;
-  --bg: #B1B3B3;
-  // bg_s code highlight bg color
-  --bg_s: #B1B3B3;
-  // bg1 - block quote, button.copy_button
-  --bg1: #ebdbb2;
-  // bg2 not used
-  --bg2: #d5c4a1;
-  // bg3 not used
-  --bg3: #bdae93;
-  // bg4 not used
-  --bg4: #63666A;
+  --bg: #f0f0f0;
+  --bg_highlight: #b3b1b2;
+  --bg_surface: #B1B3B3;
+  --bg_surface2: #ebdbb2;
 
-  --fg: #00313C;
-  --fg1: #005F6B;
-  --fg2: #348899;
-  --fg3: #94A7AE;
-  --fg4: #005F6B;
+  --fg: #05051e;
+  --fg_highlight: #005F6B;
+  --fg_border: #005F6B;
   
-  --link: #4298B5;
-  --link-visited: #38849D;
+  --link: #130080;
+  --link-visited: #691a00;
 
   --check: #b8bb26;
 
@@ -28,22 +17,17 @@
 }
 
 .darkmode {
-  --bg_h: #1d2021;
   --bg: #05051e;
-  --bg_s: #32302f;
-  --bg1: #3c3836;
-  --bg2: #504945;
-  --bg3: #665c54;
-  --bg4: #7c6f64;
+  --bg_highlight: #888977;
+  --bg_surface: #32302f;
+  --bg_surface2: #3c3836;
 
-  --fg: #B1B3B3;
-  --fg1: #ebdbb2;
-  --fg2: #d5c4a1;
-  --fg3: #bdae93;
-  --fg4: #a89984;
+  --fg: #fbf1c7;
+  --fg_highlight: #ebdbb2;
+  --fg_border: #a89984;
 
-  --link: #4298B5;
-  --link-visited: #38849D;
+  --link: #aa0085;
+  --link-visited: #691a00;
 
   --check: #b8bb26;
 

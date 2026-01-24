@@ -103,7 +103,7 @@
   }
 
   blockquote {
-    background-color: var(--bg_s);
+    background-color: var(--bg_surface);
     border-left: var(--fg) $border solid;
     border-radius: $radius;
     font-style: italic;
@@ -111,11 +111,11 @@
   }
 
   blockquote blockquote {
-    background-color: var(--bg1);
+    background-color: var(--bg_surface2);
   }
 
   pre {
-    background-color: var(--bg_s) !important;
+    background-color: var(--bg_surface) !important;
     border-radius: $radius;
     font-family: "Latin Modern Mono", Courier, monospace;
     position: relative;
@@ -128,22 +128,23 @@
   }
 
   code {
-    background-color: var(--bg_s);
+    background-color: var(--bg_surface);
     border-radius: $radius;
     font-family: "Latin Modern Mono", Courier, monospace;
     padding: 0 0.2rem;
   }
 
   mark {
-    background-color: var(--bg_s);
-    color: var(--fg1);
+    background-color: var(--bg_surface);
+    color: var(--fg_highlight);
     border-radius: $radius;
     padding: 0 0.2rem;
   }
 
+  // Keyboard
   kbd {
-    background-color: var(--bg_s);
-    color: var(--fg1);
+    background-color: var(--bg_surface);
+    color: var(--fg_highlight);
     border-radius: $radius;
   }
 
@@ -157,12 +158,12 @@
 
     td,
     th {
-      border: var(--fg4) $border solid;
+      border: var(--fg_border) $border solid;
       padding: 0.1rem 0.5rem;
     }
 
     th {
-      background-color: var(--bg_s);
+      background-color: var(--bg_surface);
       font-weight: bold;
     }
   }
@@ -346,7 +347,7 @@
 }
 
 time {
-  color: var(--fg4);
+  color: var(--fg_border);
   margin-left: 1rem;
   min-width: 5rem;
 }

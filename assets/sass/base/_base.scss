@@ -37,7 +37,7 @@ a {
 }
 
 hr {
-  background-color: var(--fg4);
+  background-color: var(--fg_border);
   margin-top: $margin;
   margin-bottom: $margin;
   border: 0;
@@ -47,7 +47,7 @@ hr {
 #main {
   & > .post-group {
     & > ul {
-      border-left: var(--fg4) solid $border;
+      border-left: var(--fg_border) solid $border;
       list-style-type: none;
       margin-left: 0.5rem;
       padding-left: $margin;

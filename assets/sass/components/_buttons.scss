@@ -11,8 +11,8 @@
 }
 
 button.copy-button {
-  background-color: var(--bg1);
-  color: var(--fg1);
+  background-color: var(--bg_surface2);
+  color: var(--fg_highlight);
   position: absolute;
   top: calc((4px + $margin) / 2);
   right: calc((4px + $margin) / 2);
@@ -46,7 +46,7 @@ button.copy-button {
   transition: opacity 0.3s;
 
   &:hover {
-    color: var(--fg1);
+    color: var(--fg_highlight);
   }
 
   @media screen {

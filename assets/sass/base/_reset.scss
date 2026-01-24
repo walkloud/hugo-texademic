@@ -5,9 +5,9 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--fg4);
+  background-color: var(--fg_border);
 
   &:hover {
-    background-color: var(--fg1);
+    background-color: var(--fg_highlight);
   }
 }
