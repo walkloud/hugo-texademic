@@ -1,0 +1,5 @@
+// load gruvbox color theme
+@use "themes/gruvbox.scss";
+
+// load all non-theme components
+@use "main.scss";

@@ -1,1 +1,35 @@
-@import "bootstrap/scss/bootstrap";
+// load all scss files except color controlled in the themes folder which is loaded first
+
+// external "vendors"
+// bootstrap
+@use 'vendors/bootstrap/scss/bootstrap';
+// javascript
+
+// math
+@use "sass:math";
+
+// utilities
+@use 'utils/variables';
+@use 'utils/mixins';
+
+// base
+@use 'base/reset';
+@use 'base/base';
+@use 'base/typography';
+
+// components
+@use 'components/buttons';
+@use 'components/card';
+@use 'components/docs-container';
+@use 'components/navbar';
+@use 'components/paginator';
+
+// layout
+@use 'layout/header';
+@use 'layout/main';
+@use 'layout/footer';
+@use 'layout/grid';
+
+// pages
+@use 'pages/members';
+@use 'pages/single';

@@ -1,4 +1,5 @@
-@import "../vars";
+@use "sass:math";
+@use "../utils/variables" as *;
 
 #main {
   & > h1 {
@@ -22,7 +23,7 @@
   }
 
   .tag {
-    background-color: var(--bg_s);
+    background-color: var(--bg_surface);
     border-radius: $radius;
     padding: 0.2em 0.3em;
   }
@@ -32,8 +33,8 @@
   }
 
   .toc {
-    background-color: var(--bg_s);
-    border: var(--fg4) 1px dashed;
+    background-color: var(--bg_surface);
+    border: var(--fg_border) 1px dashed;
     border-radius: $radius;
     display: inline-block;
     margin: 1rem;
@@ -56,12 +57,12 @@
     }
 
     &:target {
-      background-color: var(--bg_s);
+      background-color: var(--bg_surface);
     }
   }
 
   .warning {
-    background-color: var(--red);
+    background-color: var(--warning);
     color: white;
     font-size: 1.1rem;
     margin: 2rem 0;
@@ -80,7 +81,7 @@
       font-size: 16px;
       border: none;
       outline: none;
-      background-color: var(--bg_s);
+      background-color: var(--bg_surface);
       color: var(--fg);
       cursor: pointer;
       padding: 1rem;
@@ -89,6 +90,6 @@
   }
 
   #back-to-top:hover {
-      background-color: var(--bg_h);
+      background-color: var(--bg_highlight);
   }
 }

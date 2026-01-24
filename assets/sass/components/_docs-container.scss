@@ -1,0 +1,15 @@
+@use "sass:math";
+@use "../utils/variables" as *;
+@use '../utils/mixins';
+
+.docs-container {
+  padding: 2rem;
+  background: var(--bg);
+  border: 1px solid var(--fg);
+  border-radius: 8px;
+  transition: $hover-transition;
+  box-shadow: $shadow-light;
+
+  // defined in utils/_mixins
+  @include mixins.lift-effect;
+}

@@ -1,0 +1,35 @@
+:root {
+  --bg: #f0f0f0;
+  --bg_highlight: #b3b1b2;
+  --bg_surface: #B1B3B3;
+  --bg_surface2: #ebdbb2;
+
+  --fg: #05051e;
+  --fg_highlight: #005F6B;
+  --fg_border: #005F6B;
+  
+  --link: #130080;
+  --link-visited: #691a00;
+
+  --check: #b8bb26;
+
+  --warning: #E04E39;
+}
+
+.darkmode {
+  --bg: #05051e;
+  --bg_highlight: #888977;
+  --bg_surface: #32302f;
+  --bg_surface2: #3c3836;
+
+  --fg: #fbf1c7;
+  --fg_highlight: #ebdbb2;
+  --fg_border: #a89984;
+
+  --link: #aa0085;
+  --link-visited: #691a00;
+
+  --check: #b8bb26;
+
+  --warning: #fb4934;
+}

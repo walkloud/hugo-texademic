@@ -1,0 +1,13 @@
+::-webkit-scrollbar {
+  background-color: var(--bg);
+  height: 8px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--fg_border);
+
+  &:hover {
+    background-color: var(--fg_highlight);
+  }
+}

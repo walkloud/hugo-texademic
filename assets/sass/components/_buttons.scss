@@ -1,3 +1,61 @@
+@use "sass:math";
+@use "../utils/variables" as *;
+
+#sharingbuttons {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+button.copy-button {
+  background-color: var(--bg_surface2);
+  color: var(--fg_highlight);
+  position: absolute;
+  top: calc((4px + $margin) / 2);
+  right: calc((4px + $margin) / 2);
+  opacity: 0.7;
+  border: none;
+  padding: 0.5rem;
+  border-radius: $radius;
+  cursor: pointer;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1;
+    background-color: var(--bg);
+  }
+
+  .octicon-check {
+    color: var(--check);
+  }
+}
+
+.dark-mode-toggle {
+  background-color: var(--bg);
+  color: var(--fg);
+  position: absolute;
+  top: calc(((4px + $margin) / 2) + 12.55px);
+  right: $padding;
+  border: none;
+  padding: 0.5rem;
+  border-radius: $radius;
+  cursor: pointer;
+  transition: opacity 0.3s;
+
+  &:hover {
+    color: var(--fg_highlight);
+  }
+
+  @media screen {
+    @media screen and (max-width: $mobile-breakpoint) {
+      right: calc((4px + $margin) / 2);
+    }
+  }
+}
+
 .resp-sharing-button__link,
 .resp-sharing-button__icon {
   display: inline-block;

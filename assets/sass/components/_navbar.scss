@@ -1,90 +1,5 @@
 @use "sass:math";
-
-@import "../vars";
-@import "../fonts";
-@import "../members";
-
-// global
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  padding-top: 20px;
-  background-color: var(--bg);
-  color: var(--fg);
-}
-
-a {
-  text-decoration: none;
-
-  &:link {
-    color: var(--blue);
-  }
-
-  &:hover,
-  &:visited {
-    color: var(--blue-dim);
-  }
-}
-
-::selection {
-  background-color: var(--blue);
-  color: white;
-}
-
-time {
-  color: var(--fg4);
-  margin-left: 1rem;
-  min-width: 5rem;
-}
-
-hr {
-  background-color: var(--fg4);
-  margin-top: $margin;
-  margin-bottom: $margin;
-  border: 0;
-  height: $border;
-}
-
-#wrapper {
-  background-color: var(--bg);
-  display: flex;
-  flex-direction: column;
-  font-family: "Latin Modern Roman", "Times New Roman", serif;
-  min-height: 100vh;
-  overflow-wrap: break-word;
-  padding: 1rem $padding;
-
-  @media screen and (max-width: $mobile-breakpoint) {
-    padding-left: math.div($padding, 3);
-    padding-right: math.div($padding, 3);
-  }
-}
-
-.paginator {
-  align-items: flex-end;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 2rem;
-}
-
-::-webkit-scrollbar {
-  background-color: var(--bg);
-  height: 8px;
-  width: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--fg4);
-
-  &:hover {
-    background-color: var(--fg1);
-  }
-}
+@use "../utils/variables" as *;
 
 // header
 #header {
@@ -131,7 +46,7 @@ hr {
     //right: $padding;
 
     &:hover {
-      color: var(--fg1);
+      color: var(--fg_highlight);
     }
 
     // Optional: Adjust position for mobile
@@ -150,21 +65,24 @@ hr {
     margin-top: 10px;
     width: 100%;
 
-    & > span > a {
+    & > span > a,
+    .dropdown .nav-item > a {
       font-size: 1.2rem;
-      color: var(--fg1);
+      color: var(--fg);
       text-decoration: none;
       display: inline-block;
       position: relative;
+      vertical-align: middle;
+      line-height: 1.2;
 
       &:after {
-        background-color: var(--fg1);
+        background-color: var(--fg);
         content: "";
         position: absolute;
         width: 100%;
         transform: scaleX(0);
         height: $border;
-        bottom: 0;
+        bottom: -2px;
         left: 0;
         transform-origin: bottom right;
         transition: transform 0.25s ease-out;
@@ -192,7 +110,7 @@ hr {
   a,
   a:hover,
   a:visited {
-    color: var(--fg1);
+    color: var(--fg);
   }
 
   // MOBILE
@@ -210,7 +128,7 @@ hr {
     .bar {
       width: 25px;
       height: 3px;
-      background-color: var(--fg1);
+      background-color: var(--fg);
       transition: 0.3s;
     }
 
@@ -236,94 +154,12 @@ hr {
   }
 }
 
-// main
-main {
-  margin: 0 $margin;
-}
-
-#main {
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  max-width: 100%;
-  padding: 0;
-  width: calc(100% - 2rem); // TODO
-
-  @media screen and (max-width: $mobile-breakpoint) {
-    width: 100%;
-  }
-}
-
-// footer
-#footer {
-  color: var(--fg4);
-  align-items: center;
-  display: flex;
-  font-size: 0.9rem;
-  flex-direction: column;
-  margin-top: $margin;
-
-  & > .footnote {
-    text-align: center;
-  }
-}
-
-// misc
-#sharingbuttons {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 1rem;
-  flex-wrap: wrap;
-}
-
-.dark-mode-toggle {
-  background-color: var(--bg);
-  color: var(--fg);
-  position: absolute;
-  top: calc(((4px + $margin) / 2) + 12.55px);
-  right: $padding;
-  border: none;
-  padding: 0.5rem;
-  border-radius: $radius;
-  cursor: pointer;
-  transition: opacity 0.3s;
-
-  &:hover {
-    color: var(--fg1);
-  }
-
-  @media screen {
-    @media screen and (max-width: $mobile-breakpoint) {
-      right: calc((4px + $margin) / 2);
-    }
-  }
-}
-
-.icon {
-  svg {
-    fill: var(--fg);
-    margin-right: 0.3em;
-    margin-left: 0.3em;
-  }
-}
-
-.taxonomy-svg {
-  padding: 0;
-  top: 0.125em;
-  position: relative;
-}
-
-.row {
-  margin-left: 2rem;
-}
 
 /* Container for the dropdown */
 .dropdown {
   position: relative;
   display: inline-block;
+  vertical-align: middle; // Aligns the container with standard links
 }
 
 /* Hidden by default */
@@ -352,54 +188,13 @@ main {
 }
 
 .sub-link:hover {
-  background-color: var(--blue); /* Hover effect for sub-items */
+  background-color: var(--bg_highlight); /* Hover effect for sub-items */
 }
 
 /* Optional arrow styling */
 .arrow {
   font-size: 0.8rem;
   vertical-align: middle;
-}
-
-
-// add "come foward" effect when mouse hovers over box
-// 1. Define hover and shadow variables
-$hover-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-$lift-distance: -4px;
-$shadow-light: 0 1px 3px rgb(from var(--fg) r g b / 0.12), 0 1px 2px rgb(from var(--fg) r g b / 0.24);
-$shadow-heavy: 0 14px 28px rgb(from var(--fg) r g b / 0.25), 0 10px 10px rgb(from var(--fg) r g b / 0.5);
-
-// 2. Apply to your container
-.docs-container {
-  padding: 2rem;
-  background: var(--bg);
-  border: 1px solid var(--fg);
-  border-radius: 8px;
-  transition: $hover-transition;
-  box-shadow: $shadow-light;
-
-  // Nesting the hover state
-  &:hover {
-    transform: translateY($lift-distance);
-    box-shadow: $shadow-heavy;
-    cursor: pointer;
-  }
-}
-
-@mixin lift-on-hover($distance: -5px) {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
-  &:hover {
-    transform: translateY($distance);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  }
-}
-
-// Usage
-.sidebar-item {
-  @include lift-on-hover(-3px); // Subtle lift
-}
-
-.main-card {
-  @include lift-on-hover(-10px); // Dramatic lift
+  display: inline-block;
+  margin-left: 4px;
 }

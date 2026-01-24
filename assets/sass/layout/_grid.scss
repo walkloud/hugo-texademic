@@ -1,6 +1,9 @@
 @use "sass:math";
+@use "../utils/variables" as *;
 
-@import "../vars";
+.row {
+  margin-left: 2rem;
+}
 
 .grid-container {
   display: grid;
@@ -26,14 +29,14 @@
       }
 
       &:hover {
-        color: var(--fg1);
+        color: var(--fg_highlight);
       }
     }
 
     ul {
       list-style: none;
       padding: 0;
-      border-color: var(--fg4);
+      border-color: var(--fg_border);
       display: block;
       padding: math.div($margin, 2);
       margin-top: math.div($margin, 2);
@@ -49,8 +52,8 @@
         transition: color 0.3s, background-color 0.3s;
 
         &:hover {
-          color: var(--fg1);
-          background-color: var(--bg_s);
+          color: var(--fg_highlight);
+          background-color: var(--bg_surface);
           border-radius: $radius;
         }
       }

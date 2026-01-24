@@ -1,0 +1,16 @@
+@use "sass:math";
+@use "../utils/variables" as *;
+
+#main {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-width: 100%;
+  padding: 0;
+  width: calc(100% - 2rem); // TODO
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    width: 100%;
+  }
+}
