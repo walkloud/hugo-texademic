@@ -9,28 +9,23 @@
     <h3>{{ .Key }}</h3>
     <ul>
       {{ range .Pages }}
-      <div class="docs-container p-3 mb-3">
-      <li>
-        <a class="link" href="{{ .RelPermalink }}">{{ .Title }}</a>
-        <time>{{ .PublishDate.Format .Site.Params.dateFormat }}</time>
-      </li>
-      <li>
-        {{ delimit .Params.authors ", " }}
-      </li>
-      <li>
-        <p>
-        {{ if .Params.journal }}
-          {{ if .Params.doi }}
-            <a class="link" href="{{ .Params.doi }}" target="_blank">{{ .Params.journal }}</a>
+      <div class="card card--publications p-3 mb-3">
+        <div class="card-content">
+          <h4><a href="{{ .RelPermalink }}" class="main-link">{{ .Title }}</a></h4>
+          <h6>{{ delimit .Params.authors ", " }}</h6>
+        </div>
+        <div class="card__footer">
+          {{ if .Params.journal }}
+            {{ if .Params.doi }}
+              <a class="link" href="{{ .Params.doi }}" target="_blank">{{ .Params.journal }}</a>
+            {{ else }}
+              {{ .Params.journal }}
+            {{ end }}
+            [<a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a>]
           {{ else }}
-            {{ .Params.journal }}
+            <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a>
           {{ end }}
-          [ <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a> ]
-        {{ else }}
-          <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a>
-        {{ end }}
-        </p>
-      </li>
+        </div>
       </div>
       {{ end }}
     </ul>

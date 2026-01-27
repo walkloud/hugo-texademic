@@ -1,0 +1,82 @@
+@use "sass:math";
+@use "../utils/variables" as *;
+@use '../utils/mixins';
+
+// Sub-card layout configuration (Type: Columns)
+$sub-card-layouts: (
+  "publications": 1,
+  "talks": 3,
+  "software": 2,
+  "news": 2,
+);
+
+.card {
+  background-color: var(--bg);
+  border: 1px solid var(--fg);
+  color: var(--fg);
+  padding: 20px;
+  border-radius: 8px;
+  transition: $hover-transition;
+  box-shadow: $shadow-light;
+  position: relative;
+
+  .main-link {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1; // Covers the card
+    }
+  }
+
+  .category-link {
+    position: relative; // Pulls it above the main-link's pseudo-element
+    z-index: 2;         // Higher than the stretched link
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  // defined in utils/_mixins
+  @include mixins.lift-effect;
+
+  .sub-card-container {
+    display: grid;
+    gap: 1rem;
+    margin-top: 15px;
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+  }
+
+  &__footer {
+    grid-column: 1 / -1; // Still spans everything!
+    position: relative; // Pulls it above the main-link's pseudo-element
+    z-index: 2;         // Higher than the stretched link
+    text-decoration: none;
+  }
+
+  // publication sub-card
+  &--publications {
+    .sub-card-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  &--talks {
+    .sub-card-container {
+      grid-template-columns: 2fr 5fr 1fr;
+    }
+  }
+  // Loop through the map to create sub-type modifiers
+  //@each $type, $cols in $sub-card-layouts {
+  //  &--#{$type} {
+  //    .sub-card-container {
+  //      grid-template-columns: repeat($cols, minmax(0, 1fr));
+  //    }
+  //  }
+  //}
+}

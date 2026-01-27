@@ -7,9 +7,34 @@
   {{ range $pages.GroupByDate "2006" }}
   <div class="post-group">
     <h3>{{ .Key }}</h3>
+    <ul>
       {{ range .Pages }}
-        {{ partial "talks" . }}
+        <!-- {{ partial "talks" . }} -->
+        <div class="card card--talks p-3 mb-3">
+          <div class="sub-card-container">
+            <div><h6>{{ .Params.presenter }}</h6></div>
+            <div>
+              <h4>{{ .Params.title }}</h4>
+              <h6>{{ .PublishDate.Format .Site.Params.dateFormat }}</h6>
+              {{ with .Params.conf }}
+                {{ if $.Params.conf_url }}
+                  <a href="{{ $.Params.conf_url | safeHTML }}" target="blank">{{ . }}</a>
+                {{ else }}
+                  <h5>{{ . }}</h5>
+                {{ end }}
+              {{ end }}
+            </div>
+            {{ with .Params.conf_image }}
+              <div>
+              {{ with resources.Get . }}
+                <img src="{{ .RelPermalink }}">
+              {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        </div>
       {{ end }}
+    </ul>
   </div>
   {{ end }}
 </main>
