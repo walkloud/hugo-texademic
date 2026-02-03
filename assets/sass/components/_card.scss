@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "../utils/variables" as *;
+@use "../base/typography" as *;
 @use '../utils/mixins';
 
 // Sub-card layout configuration (Type: Columns)
@@ -54,21 +55,36 @@ $sub-card-layouts: (
   }
 
   &__footer {
-    grid-column: 1 / -1; // Still spans everything!
+    @extend h5;          // start with H5 fontsize
+    grid-column: 1 / -1; // Spans entire card
     position: relative; // Pulls it above the main-link's pseudo-element
     z-index: 2;         // Higher than the stretched link
     text-decoration: none;
-  }
 
+    display: flex;
+    align-items: baseline; // Aligns text along the bottom edge
+    gap: 5px;             // Adds a little breathing room between items
+  }
+  &__footer_highlight a {
+    font-size: inherit;
+    color: var(--fg_highlight);
+    margin: 0; // Headers often have default margins that might misalign text
+  }
   // publication sub-card
-  &--publications {
+  &__publications {
     .sub-card-container {
       grid-template-columns: 1fr;
     }
   }
-  &--talks {
+  &__talks {
     .sub-card-container {
       grid-template-columns: 2fr 5fr 1fr;
+    }
+    .talk-title {
+      @extend h5;
+      margin: 0 0 0.25rem 0; // Remove default margins
+      color: var(--warning);
+      line-height: 1.2;
     }
   }
   // Loop through the map to create sub-type modifiers

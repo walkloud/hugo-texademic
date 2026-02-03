@@ -210,27 +210,27 @@
 }
 
 .content h1 {
-  font-size: $f * math.pow($phi, 2);
+  font-size: clamp(2rem, 5vw, $f * math.pow($phi, 2));
 }
 
 .content h2 {
-  font-size: $f * math.pow($phi, math.div(3, 2));
+  font-size: clamp(1.5rem, 3.5vw, $f * math.pow($phi, math.div(3, 2)));
 }
 
 .content h3 {
-  font-size: $f * $phi;
+  font-size: clamp(1.2rem, 2.5vw, $f * $phi);
 }
 
 .content h4 {
-  font-size: $f * math.sqrt($phi);
+  font-size: clamp(1rem, 2vw, $f * math.sqrt($phi));
 }
 
 .content h5 {
-  font-size: $f;
+  font-size: clamp(0.9rem, 1.5vw, $f);
 }
 
 .content h6 {
-  font-size: math.div($f, math.sqrt($phi));
+  font-size: clamp(0.8rem, 1vw, math.div($f, math.sqrt($phi)));
 }
 
 .content img {
