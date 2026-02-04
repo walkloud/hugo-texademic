@@ -55,7 +55,7 @@ $sub-card-layouts: (
   }
 
   &__footer {
-    @extend h5;          // start with H5 fontsize
+    @include mixins.h5-styles;
     grid-column: 1 / -1; // Spans entire card
     position: relative; // Pulls it above the main-link's pseudo-element
     z-index: 2;         // Higher than the stretched link
@@ -65,10 +65,17 @@ $sub-card-layouts: (
     align-items: baseline; // Aligns text along the bottom edge
     gap: 5px;             // Adds a little breathing room between items
   }
-  &__footer_highlight a {
+  &__footer_highlight {
     font-size: inherit;
     color: var(--fg_highlight);
     margin: 0; // Headers often have default margins that might misalign text
+    a {
+      color: inherit; 
+      text-decoration: underline; 
+      &:hover {
+        opacity: 0.8; // Subtle feedback on hover
+      }
+    }
   }
   // publication sub-card
   &__publications {
@@ -144,14 +151,14 @@ $sub-card-layouts: (
         // Standard PDF "File" Mask
         -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z'/></svg>") no-repeat center / contain;
         mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z'/></svg>") no-repeat center / contain;
-  }
+      }
 
       &:hover {
         background-color: #d9534f;
         color: white;
         
         &::before {
-          background-color: white; // Icon turns white on hover
+          background-color: white;
         }
       }
     }
