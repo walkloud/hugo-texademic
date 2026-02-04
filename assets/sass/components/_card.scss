@@ -76,29 +76,103 @@ $sub-card-layouts: (
     grid-template-columns: 1fr;
   }
   &__publications-title {
-      @extend h4;
+      @include mixins.h4-styles;
       a { font-size: 1em; }
   }
   &__publications-authors {
-      @extend h6;
+      @include mixins.h6-styles;
   }
   &__talks {
-    .sub-card-container {
-      grid-template-columns: 2fr 5fr 1fr;
+    display: grid;
+    grid-template-columns: 2fr 5fr 1.5fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    align-items: start;
+  }
+  // Speaker
+  &__talk-speaker {
+    @include mixins.h4-styles;
+    color: var(--fg);
+  }
+  // Details
+  &__talk-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .title {
+      // font-size
+      @include mixins.h4-styles;
+      margin: 0;
+      color: var(--fg_highlight);
     }
-    .talk-title {
-      @extend h5;
-      margin: 0 0 0.25rem 0; // Remove default margins
-      color: var(--warning);
-      line-height: 1.2;
+    .meta {
+      @include mixins.h5-styles;
+
+      span {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-right: 10px;
+      }
+    }
+
+    .slides-link {
+      @include mixins.h6-styles;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      // size - compact
+      padding: 4px 10px;
+      width: fit-content;
+      // Visual style
+      text-decoration: none;
+      background-color: transparent;
+      color: #d9534f;
+      border: 1px solid #d9534f;
+      border-radius: 4px;
+      transition: all 0.2s ease-in-out;
+
+      // The PDF Graphic
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        margin-right: 6px;
+        background-color: #d9534f;
+        // Standard PDF "File" Mask
+        -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z'/></svg>") no-repeat center / contain;
+        mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z'/></svg>") no-repeat center / contain;
+  }
+
+      &:hover {
+        background-color: #d9534f;
+        color: white;
+        
+        &::before {
+          background-color: white; // Icon turns white on hover
+        }
+      }
     }
   }
-  // Loop through the map to create sub-type modifiers
-  //@each $type, $cols in $sub-card-layouts {
-  //  &--#{$type} {
-  //    .sub-card-container {
-  //      grid-template-columns: repeat($cols, minmax(0, 1fr));
-  //    }
-  //  }
-  //}
+  // Conference/Institute Image
+  &__talk-image {
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+  }
+
+  // Responsive: Stack columns on mobile
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    
+    &__talk-image {
+      order: -1; // Move image to top on mobile
+      max-width: 200px;
+    }
+  }
 }

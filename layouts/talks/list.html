@@ -2,7 +2,7 @@
 {{ end }}
 
 {{ define "main" }}
-<main id="main" class="archive">
+<main id="main">
   {{ $pages := where .Site.RegularPages "Type" "talks" }}
   {{ range $pages.GroupByDate "2006" }}
   <div class="post-group">
@@ -10,28 +10,45 @@
     <ul>
       {{ range .Pages }}
         <!-- {{ partial "talks" . }} -->
-        <div class="card card--talks p-3 mb-3">
-          <div class="sub-card-container">
-            <div><h6>{{ .Params.presenter }}</h6></div>
-            <div>
-              <h4>{{ .Params.title }}</h4>
-              <h6>{{ .PublishDate.Format .Site.Params.dateFormat }}</h6>
-              {{ with .Params.conf }}
-                {{ if $.Params.conf_url }}
-                  <a href="{{ $.Params.conf_url | safeHTML }}" target="blank">{{ . }}</a>
-                {{ else }}
-                  <h5>{{ . }}</h5>
-                {{ end }}
-              {{ end }}
+        <div class="card card__talks">
+          <div class="card__talk-speaker">
+            {{ .Params.presenter }}
+          </div>
+          <div class="card__talk-details">
+            <div class="title">
+              {{ .Params.title }}
             </div>
-            {{ with .Params.conf_image }}
-              <div>
-              {{ with resources.Get . }}
-                <img src="{{ .RelPermalink }}">
-              {{ end }}
+            <div class="meta">
+              <span>
+                {{ if .Params.conf }}
+                  {{ if .Params.conf_url }}
+                    <a href="{{ .Params.conf_url | safeURL }}" target="_blank" rel="noopener">
+                      {{ .Params.conf }}
+                    </a>
+                  {{ else }}
+                    <h5>{{ .Params.conf }}</h5>
+                  {{ end }}
+                {{ end }}
+              </span>
+              <span class="date">
+                {{ .PublishDate.Format .Site.Params.dateFormat }}
+              </span>
+            </div>
+            {{ with .Params.slides_url }}
+              <div class="slides-container"> 
+                <a href="{{ . | safeURL }}" class="slides-link" target="_blank" rel="noopener">
+                  Slides (PDF)
+                </a>
               </div>
             {{ end }}
           </div>
+          {{ with .Params.conf_image }}
+            <div class="card__talk-image">
+              {{ with resources.Get . }}
+                <img src="{{ .RelPermalink }}">
+              {{ end }}
+            </div>
+          {{ end }}
         </div>
       {{ end }}
     </ul>
