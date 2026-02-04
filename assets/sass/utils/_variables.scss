@@ -1,6 +1,7 @@
 // https://grtcalculator.com/math/
 @use "sass:math";
 
+// Golden ratio, phi
 $phi: math.div(1 + math.sqrt(5), 2);
 $f: math.div(2.4rem, math.pow($phi, 2));
 

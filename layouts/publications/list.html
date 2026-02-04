@@ -9,10 +9,12 @@
     <h3>{{ .Key }}</h3>
     <ul>
       {{ range .Pages }}
-      <div class="card card__publications p-3 mb-3">
-        <div class="card-content">
-          <h4><a href="{{ .RelPermalink }}" class="main-link">{{ .Title }}</a></h4>
-          <h6>{{ delimit .Params.authors ", " }}</h6>
+      <div class="card card__publications">
+        <div class="card__publications-title">
+          <a href="{{ .RelPermalink }}" class="main-link">{{ .Title }}</a>
+        </div>
+        <div class="card__publications-authors">
+          {{ delimit .Params.authors ", " }}
         </div>
         <div class="card__footer">
           {{/* JOURNAL / ARXIV info */}}

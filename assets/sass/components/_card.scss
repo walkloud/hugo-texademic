@@ -72,9 +72,15 @@ $sub-card-layouts: (
   }
   // publication sub-card
   &__publications {
-    .sub-card-container {
-      grid-template-columns: 1fr;
-    }
+    display: grid; 
+    grid-template-columns: 1fr;
+  }
+  &__publications-title {
+      @extend h4;
+      a { font-size: 1em; }
+  }
+  &__publications-authors {
+      @extend h6;
   }
   &__talks {
     .sub-card-container {
