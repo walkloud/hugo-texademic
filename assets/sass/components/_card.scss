@@ -77,6 +77,7 @@ $sub-card-layouts: (
       }
     }
   }
+
   // publication sub-card
   &__publications {
     display: grid; 
@@ -89,6 +90,8 @@ $sub-card-layouts: (
   &__publications-authors {
       @include mixins.h6-styles;
   }
+
+  // TALKS sub-card
   &__talks {
     display: grid;
     grid-template-columns: 2fr 5fr 1.5fr;
@@ -172,6 +175,35 @@ $sub-card-layouts: (
       object-fit: cover;
     }
   }
+
+  // Software subcard
+  &__software {
+    // left column is title, source code link etc
+    // right column is more detailed description
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    align-items: start;
+  }
+  &__software-title {
+    .title {
+      // font-size
+      @include mixins.h4-styles;
+      margin: 0;
+      color: var(--fg_highlight);
+    }
+    .software-link {
+      @include mixins.software-button();
+      @include mixins.h6-styles;
+      display: inline-flex;
+      gap: 3px;
+      align-items: center;
+      justify-content: center;
+      min-width: 100px;
+    }
+  }
+
 
   // Responsive: Stack columns on mobile
   @media (max-width: 768px) {
