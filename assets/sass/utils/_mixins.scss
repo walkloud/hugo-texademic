@@ -1,6 +1,31 @@
 @use "sass:math";
 @use "../utils/variables" as *;
 
+// FONTS
+@mixin h-line-height {
+  line-height: $f * $phi + 1;
+}
+@mixin h1-styles {
+  font-size: clamp(2rem, 5vw, $f * math.pow($phi, 2));
+}
+@mixin h2-styles {
+  font-size: clamp(1.5rem, 3.5vw, $f * math.pow($phi, math.div(3, 2)));
+}
+@mixin h3-styles {
+  font-size: clamp(1.2rem, 2.5vw, $f * $phi);
+}
+@mixin h4-styles {
+  font-size: clamp(1rem, 2vw, $f * math.sqrt($phi));
+}
+@mixin h5-styles {
+  font-size: clamp(0.9rem, 1.5vw, $f);
+}
+@mixin h6-styles {
+  font-size: clamp(0.8rem, 1vw, math.div($f, math.sqrt($phi)));
+}
+
+
+// CARD LIFT
 @mixin lift-on-hover($distance: -5px) {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
@@ -23,24 +48,29 @@
 }
 
 
-@mixin h-line-height {
-  line-height: $f * $phi + 1;
+// SOFTWARE BUTTON
+@mixin software-button() {
+  display: inline-block;
+  text-decoration: none; // Removes the underline
+  text-align: center;
+  padding: 5px 5px;
+  background-color: var(--fg_highlight);
+  color: var(--bg_surface2);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    filter: brightness(0.9);
+    text-decoration: none;
+  }
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Adds depth
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  &:active {
+    transform: translateY(1px); // Sinks slightly when clicked  
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  }
 }
-@mixin h1-styles {
-  font-size: clamp(2rem, 5vw, $f * math.pow($phi, 2));
-}
-@mixin h2-styles {
-  font-size: clamp(1.5rem, 3.5vw, $f * math.pow($phi, math.div(3, 2)));
-}
-@mixin h3-styles {
-  font-size: clamp(1.2rem, 2.5vw, $f * $phi);
-}
-@mixin h4-styles {
-  font-size: clamp(1rem, 2vw, $f * math.sqrt($phi));
-}
-@mixin h5-styles {
-  font-size: clamp(0.9rem, 1.5vw, $f);
-}
-@mixin h6-styles {
-  font-size: clamp(0.8rem, 1vw, math.div($f, math.sqrt($phi)));
-}
+
