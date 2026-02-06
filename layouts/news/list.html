@@ -9,22 +9,25 @@
     <h3>{{ .Key }}</h3>
     <ul>
       {{ range .Pages }}
-      <div style="border: 1px solid var(--fg); margin:10px; padding:10px;">
-      <li>
-        <a class="link" href="{{ .RelPermalink }}">{{ .Title }}</a>
-        {{ with .Params.image }}
-          {{ with resources.Get . }}
-            <img src="{{ .RelPermalink }}" width="10%">
-          {{ end }}
-        {{ end }}
-        <time>{{ .PublishDate.Format .Site.Params.dateFormat }}</time>
-      </li>
-      <details>
-        <summary>Details</summary>
-          <div>
+      <div class="card card__news">
+        <div class="card__news-details">
+          <div class="title">
+            <a class="link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </div>
+          <div class="date">
+            {{ .PublishDate.Format .Site.Params.dateFormat }}
+          </div>
+          <div class="description">
             {{ .Content }}
           </div>
-      </details>
+        </div>
+        {{ with .Params.image }}
+          <div class="card__talk-image">
+            {{ with resources.Get . }}
+              <img src="{{ .RelPermalink }}">
+            {{ end }}
+          </div>
+        {{ end }}
       </div>
       {{ end }}
     </ul>

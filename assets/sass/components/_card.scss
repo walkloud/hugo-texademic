@@ -92,6 +92,36 @@ $sub-card-layouts: (
       @include mixins.h6-styles;
   }
 
+  // NEWS sub-card
+  &__news {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    align-items: start;
+  }
+  &__news-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .title {
+      @include mixins.h4-styles;
+      margin: 0;
+      color: var(--fg_highlight);
+    }
+    .date {
+      @include mixins.h6-styles;
+      margin: 0;
+      color: var(--fg_highlight);
+    }
+    .description {
+      @include mixins.h5-styles;
+      margin: 0;
+      color: var(--fg);
+    }
+  }
+
   // TALKS sub-card
   &__talks {
     display: grid;
