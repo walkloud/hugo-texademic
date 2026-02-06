@@ -8,10 +8,11 @@
       {{ .Content }}
     {{ end }}
 
-    {{/* Make adding news and how much controllable in config file */}}
+
+    {{ $nNews := .Site.Params.front_news | default 5 }}
     <h4 style="margin-top: 1cm">Latest News</h4>
     {{ $allowedTypes := slice "news" "publications" }}
-    {{ range ( where site.RegularPages "Type" "in" $allowedTypes | first 5 ) }}
+    {{ range ( where site.RegularPages "Type" "in" $allowedTypes | first $nNews ) }}
       <div class="row align-items-start">
         <div class="col-sm-3">
           <h5><time style="margin-left: 0rem">{{ .PublishDate.Format .Site.Params.dateFormat }}</time></h5>
@@ -29,6 +30,9 @@
               [ <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a> ]
             {{ else }}
               <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a>
+            {{ end }}
+            {{ if .Params.comment }}
+              <span class="card__footer_highlight"> | {{ .Params.comment }}</span>
             {{ end }}
             </p>
           {{ end }}

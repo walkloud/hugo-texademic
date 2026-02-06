@@ -220,7 +220,7 @@ $sub-card-layouts: (
   &__software-title {
     .title {
       // font-size
-      @include mixins.h4-styles;
+      @include mixins.h3-styles;
       margin: 0;
       color: var(--fg_highlight);
     }
