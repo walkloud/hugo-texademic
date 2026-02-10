@@ -1,7 +1,7 @@
 ---
 presenter: 
 title: 
-date: 
+date: YYYY-MM-DD
 conf: 
 conf_url: 
 slides_url: 
