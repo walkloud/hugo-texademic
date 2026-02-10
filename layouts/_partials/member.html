@@ -25,9 +25,9 @@
       {{ end }}
   {{ end }}
   <div class="portrait-title">
-    <h3 itemprop="name"> 
+    <h4 itemprop="name"> 
       <a href="{{ .context.RelPermalink }}"> {{ .context.Params.first_name }} {{ .context.Params.last_name }}</a>
-    </h3>
+    </h4>
     {{ if $title }}
       {{ with .context.Params.title }}
         <h5>{{ . }}</h5>

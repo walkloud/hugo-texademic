@@ -10,15 +10,15 @@
 
 
     {{ $nNews := .Site.Params.front_news | default 5 }}
-    <h4 style="margin-top: 1cm">Latest News</h4>
+    <h2 style="margin-top: 1cm">Latest News</h2>
     {{ $allowedTypes := slice "news" "publications" }}
     {{ range ( where site.RegularPages "Type" "in" $allowedTypes | first $nNews ) }}
       <div class="row align-items-start">
         <div class="col-sm-3">
-          <h5><time style="margin-left: 0rem">{{ .PublishDate.Format .Site.Params.dateFormat }}</time></h5>
+          <h4><time style="margin-left: 0rem">{{ .PublishDate.Format .Site.Params.dateFormat }}</time></h4>
         </div>
         <div class="col">
-          <h5><a href="{{ .Permalink }}"> {{ .Title }}</a></h5>
+          <h3><a href="{{ .Permalink }}"> {{ .Title }}</a></h3>
           {{ if eq .Type "publications" }}
             <p>
             {{ if .Params.journal }}
