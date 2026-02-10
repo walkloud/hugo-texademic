@@ -18,6 +18,15 @@
         <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a>
       {{ end }}
     </p>
+    {{ if .Params.comment }}
+      <span class="card__footer_highlight">
+        {{ if .Params.comment_link }}
+          <a class="link" href="{{ .Params.comment_link | safeURL }}" target="_blank">{{ .Params.comment }}</a>
+        {{ else }}
+          {{ .Params.comment }}
+        {{ end }}
+      </span>
+    {{ end }}
   </div>
   <p>
     {{ .Content }}

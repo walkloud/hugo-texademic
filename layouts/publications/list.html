@@ -33,11 +33,13 @@
           
           {{/* Any comments like Editor's suggestion */}}
           {{ $page := . }} {{ with .Params.comment }}
-            {{ if $page.Params.comment_link }}
-              <span class="card__footer_highlight"> | <a class="link" href="{{ $page.Params.comment_link }}" target="_blank">{{ . }}</a></span>
-            {{ else }}
-              <span class="card__footer_highlight"> | {{ . }}</span>
-            {{ end }}
+            <span class="card__footer_highlight"> | 
+              {{ if $page.Params.comment_link }}
+                <a class="link" href="{{ $page.Params.comment_link | safeURL }}" target="_blank">{{ . }}</a>
+              {{ else }}
+                {{ . }}
+              {{ end }}
+            </span>
           {{ end }}
 
         </div>
