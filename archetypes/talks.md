@@ -1,0 +1,9 @@
+---
+presenter: 
+title: 
+date: 
+conf: 
+conf_url: 
+slides_url: 
+conf_image: 
+---
