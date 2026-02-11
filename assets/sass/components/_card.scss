@@ -235,6 +235,37 @@ $sub-card-layouts: (
     }
   }
 
+  // FORMER GROUP MEMBER sub-card
+  &__former-member {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 4fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    align-items: start;
+
+    &-header {
+      border-bottom: 2px solid var(--fg_highlight); 
+      background-color: var(--bg_surface); 
+    
+      .details {
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .details {
+      @include mixins.h5-styles;
+      color: var(--fg);
+    }
+  }
 
   // Responsive: Stack columns on mobile
   @media (max-width: 768px) {
