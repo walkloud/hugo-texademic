@@ -37,3 +37,12 @@
   </nav>
 </header>
 <hr class="head-rule"></hr>
+{{ with .Params.page_banner }}
+  {{ with resources.Get . }}
+    <section class="hero" style="background-image: url('{{ .RelPermalink }}');">
+      <h1>{{ $.Title }}</h1>
+    </section>
+    {{ else }}
+      <p style="color: red;">front-matter/page_banner not found in "assets/{{ . }}"</p>
+    {{ end }}
+  {{ end }}

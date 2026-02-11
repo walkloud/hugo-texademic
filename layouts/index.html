@@ -3,6 +3,14 @@
 
 {{ define "main" }}
 <main>
+  {{ with .Site.Params.home_banner }}
+    {{ with resources.Get . }}
+      <section class="hero" style="background-image: url('{{ .RelPermalink }}');">
+      </section>
+    {{ else }}
+      <p style="color: red;">hugo.{toml/yaml}-params-home_banner not found in "assets/{{ . }}"</p>
+    {{ end }}
+  {{ end }}
   <div id="content" class="index">
     {{ with .Site.GetPage "_index.md" }}
       {{ .Content }}
