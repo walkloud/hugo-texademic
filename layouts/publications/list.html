@@ -3,6 +3,13 @@
 
 {{ define "main" }}
 <main id="main">
+  {{/* if Content is provided in list page */}}
+  {{ with .Content }}
+    <div class="content h6">
+        {{ . }}
+    </div>
+  {{ end }}
+
   {{ $pages := where .Site.RegularPages "Type" "publications" }}
   {{ range $pages.GroupByDate "2006" }}
   <div class="post-group">
