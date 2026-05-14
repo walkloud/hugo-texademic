@@ -22,6 +22,21 @@ I wanted to create a theme that is useful for my interests in creating a static 
 ## Installation
 
 ## Usage
+To make a new site with this theme, one option is
+1. create your github project site, <collaboration>.github.io
+2. clone locally
+3. cd <collaboration>.github.io
+4. hugo new site . --force
+5. git submodule add https://github.com/walkloud/hugo-texademic.git themes/hugo-texademic
+6. cp -r themes/hugo-texademic/exampleSite/* .
+7. edit menu and content as desired
+8. `bash themes/hugo-texademic/scripts/add_npm_modules.sh`
+9. git add:
+    - git add themes/hugo-texademic/
+    - git add content
+10. git add package.json package-lock.json; git add <your content>
+11. follow instructions: `https://gohugo.io/host-and-deploy/host-on-github-pages/`
+12. git commit; git push;
 
 ### Collaboration Page
 
