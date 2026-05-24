@@ -1,7 +1,7 @@
 @use "sass:math";
-@use "../utils/variables" as *;
+@use "../abstracts/variables" as *;
 @use "../base/typography" as *;
-@use '../utils/mixins';
+@use '../abstracts/mixins';
 
 // Sub-card layout configuration (Type: Columns)
 $sub-card-layouts: (
@@ -169,8 +169,8 @@ $sub-card-layouts: (
       // Visual style
       text-decoration: none;
       background-color: transparent;
-      color: #d9534f;
-      border: 1px solid #d9534f;
+      color: var(--danger);
+      border: 1px solid var(--danger);
       border-radius: 4px;
       transition: all 0.2s ease-in-out;
 
@@ -181,14 +181,14 @@ $sub-card-layouts: (
         width: 14px;
         height: 14px;
         margin-right: 6px;
-        background-color: #d9534f;
+        background-color: var(--danger);
         // Standard PDF "File" Mask
         -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z'/></svg>") no-repeat center / contain;
         mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z'/></svg>") no-repeat center / contain;
       }
 
       &:hover {
-        background-color: #d9534f;
+        background-color: var(--danger);
         color: white;
         
         &::before {

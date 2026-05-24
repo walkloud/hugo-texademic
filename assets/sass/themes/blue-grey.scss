@@ -12,8 +12,17 @@
   --link-visited: #691a00;
 
   --check: #b8bb26;
-
+ 
   --warning: #E04E39;
+  --danger: #d9534f;
+  --accent: #005F6B;
+
+  --bs-primary: var(--link);
+  --bs-success: var(--check);
+  --bs-warning: var(--warning);
+  --bs-danger: var(--danger);
+  --bs-body-bg: var(--bg);
+  --bs-body-color: var(--fg);
 }
 
 .darkmode {
@@ -30,6 +39,15 @@
   --link-visited: #91A7FF;
 
   --check: #9CA3AF;
-
+ 
   --warning: #E04E39;
+  --danger: #d9534f;
+  --accent: #74c0fc;
+
+  --bs-primary: var(--link);
+  --bs-success: var(--check);
+  --bs-warning: var(--warning);
+  --bs-danger: var(--danger);
+  --bs-body-bg: var(--bg);
+  --bs-body-color: var(--fg);
 }

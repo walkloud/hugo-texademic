@@ -9,8 +9,8 @@
 @use "sass:math";
 
 // utilities
-@use 'utils/variables';
-@use 'utils/mixins';
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
 
 // base
 @use 'base/reset';

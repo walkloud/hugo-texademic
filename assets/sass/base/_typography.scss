@@ -1,6 +1,6 @@
 @use "sass:math";
-@use "../utils/variables" as *;
-@use '../utils/mixins';
+@use "../abstracts/variables" as *;
+@use '../abstracts/mixins';
 
 @font-face {
     font-display: swap;
