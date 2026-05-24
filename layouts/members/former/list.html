@@ -3,7 +3,7 @@
 
 {{ define "main" }}
 <main id="main">
-  {{ $pages := where .Site.RegularPages "Type" "members" }}
+  {{ $pages := where site.RegularPages "Type" "members" }}
 
   {{ $members := where $pages "Params.former" true }}
   {{ if gt (len $members) 0 }}
@@ -24,7 +24,7 @@
               <img src="{{ .RelPermalink }}">
             {{ end }}
           {{ else }}
-            {{ with .Site.Params.default_portrait }}
+            {{ with site.Params.default_portrait }}
               {{ with resources.Get . }}
                 <img src="{{ .RelPermalink }}">
               {{ end }}

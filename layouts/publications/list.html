@@ -10,7 +10,7 @@
     </div>
   {{ end }}
 
-  {{ $pages := where .Site.RegularPages "Type" "publications" }}
+  {{ $pages := where site.RegularPages "Type" "publications" }}
   {{ range $pages.GroupByDate "2006" }}
   <div class="post-group">
     <h3>{{ .Key }}</h3>

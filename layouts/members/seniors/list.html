@@ -3,7 +3,7 @@
 
 {{ define "main" }}
 <main id="main">
-  {{ $pages := where .Site.RegularPages "Type" "members" }}
+  {{ $pages := where site.RegularPages "Type" "members" }}
 
   {{ $members := where $pages "Params.position" "senior" }}
   {{ if gt (len $members) 0 }}

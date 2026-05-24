@@ -1,4 +1,4 @@
-{{ $parsedUrl := urls.Parse .Site.BaseURL }}
+{{ $parsedUrl := urls.Parse site.BaseURL }}
 {{ $domain := $parsedUrl.Host }}
 {{ $domainWithoutWWW := replace $domain "www." "" }}
 <header id="header">
@@ -8,7 +8,7 @@
         <span class="bar"></span>
   </button>
   <nav>
-    {{ range .Site.Menus.main }}
+    {{ range site.Menus.main }}
       {{ if .HasChildren }}
         <div class="dropdown">
           <span class="nav-item">
