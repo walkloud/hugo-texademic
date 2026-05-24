@@ -59,7 +59,14 @@
   <!-- style -->
   {{ $theme := .Site.Params.theme | default "gruvbox" }}
   {{ $options := dict "transpiler" "dartsass" "targetPath" "css/main.css" }}
-  {{ with resources.Get (printf "sass/main-%s.scss" $theme) | toCSS $options | postCSS | minify | fingerprint }}
+  
+  {{/* Load Theme Variables */}}
+  {{ with resources.Get (printf "sass/themes/%s.scss" $theme) | toCSS $options | postCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+  {{ end }}
+
+  {{/* Load Main Styles */}}
+  {{ with resources.Get "sass/main.scss" | toCSS $options | postCSS | minify | fingerprint }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
   {{ end }}
 
