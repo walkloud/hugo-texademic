@@ -3,7 +3,7 @@
 
 {{ define "main" }}
 <main id="main">
-  {{ $pages := where .Site.RegularPages "Type" "talks" }}
+  {{ $pages := where site.RegularPages "Type" "talks" }}
   {{ range $pages.GroupByDate "2006" }}
   <div class="post-group">
     <h3>{{ .Key }}</h3>
@@ -31,7 +31,7 @@
                 {{ end }}
               </span>
               <span class="date">
-                {{ .PublishDate.Format .Site.Params.dateFormat }}
+                {{ .PublishDate.Format site.Params.dateFormat }}
               </span>
             </div>
             {{ with .Params.slides_url }}

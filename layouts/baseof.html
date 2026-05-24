@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}" style="font-size: {{ .Site.Params.rootFontSize | default "100%" }}">
+<html lang="{{ site.LanguageCode }}" style="font-size: {{ site.Params.rootFontSize | default "100%" }}">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- author -->
-  <meta name="author" content="{{ .Site.Params.author }}">
+  <meta name="author" content="{{ site.Params.author }}">
 
   <!-- description -->
   {{ if .Description }}
@@ -14,28 +14,28 @@
   {{ else if and .IsPage .Summary }}
   <meta name="description" content="{{ .Summary }}">
   {{ else }}
-  <meta name="description" content="{{ .Site.Params.description }}">
+  <meta name="description" content="{{ site.Params.description }}">
   {{ end }}
 
   <!-- favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.BaseURL }}/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.BaseURL }}/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ .Site.BaseURL }}/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.BaseURL }}/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.BaseURL }}/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ site.BaseURL }}/images/favicon-16x16.png">
 
   <!-- keywords -->
   {{ if .Keywords }}
-  <meta name="keywords" content='{{ delimit .Keywords " " }} {{ delimit .Site.Params.keywords " " }}'>
+  <meta name="keywords" content='{{ delimit .Keywords " " }} {{ delimit site.Params.keywords " " }}'>
   {{ else }}
-  <meta name="keywords" content='{{ delimit .Site.Params.keywords " " }}'>
+  <meta name="keywords" content='{{ delimit site.Params.keywords " " }}'>
   {{ end }}
 
   <!-- math -->
-  {{ if or .Params.math .Site.Params.math }}
+  {{ if or .Params.math site.Params.math }}
   {{ partial "math.html" . }}
   {{ end }}
 
   <!-- buymeacoffee -->
-  {{ .Site.Params.buymeacoffee.code | safeHTML }}
+  {{ site.Params.buymeacoffee.code | safeHTML }}
 
   <!-- opengraph -->
   {{ template "_internal/opengraph.html" . }}
@@ -50,14 +50,14 @@
   <!-- rss -->
   {{ range .AlternativeOutputFormats -}}
   {{ printf `
-  <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
   {{ end -}}
 
   <!-- schema -->
   {{ template "_internal/schema.html" . }}
 
   <!-- style -->
-  {{ $theme := .Site.Params.theme | default "gruvbox" }}
+  {{ $theme := site.Params.theme | default "gruvbox" }}
   {{ $options := dict "transpiler" "dartsass" "targetPath" "css/main.css" }}
   
   {{/* Load Theme Variables */}}
@@ -72,9 +72,9 @@
 
   <!-- title -->
   {{ if .IsHome }}
-  <title>{{ .Site.Title }}</title>
+  <title>{{ site.Title }}</title>
   {{ else }}
-  <title>{{ .Title }} - {{ .Site.Title }}</title>
+  <title>{{ .Title }} - {{ site.Title }}</title>
   {{ end }}
 
   <!-- x -->
@@ -96,12 +96,12 @@
   <script src="{{ $menuJs.RelPermalink }}" integrity="{{ $menuJs.Data.Integrity }}"></script>
 
   <!-- custom css -->
-  {{ range .Site.Params.customCSS }}
+  {{ range site.Params.customCSS }}
   <link media="screen" rel="stylesheet" href="{{ . | absURL }}" />
   {{ end }}
 
   <!-- custom js -->
-  {{ range .Site.Params.customJS }}
+  {{ range site.Params.customJS }}
   <script src="{{ . | absURL }}"></script>
   {{ end }}
 

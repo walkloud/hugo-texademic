@@ -1,8 +1,8 @@
 <footer id="footer">
   <div>
-    <span>{{ .Site.Params.footnote | safeHTML }}</span>
+    <span>{{ site.Params.footnote | safeHTML }}</span>
   </div>
   <div>
-    <span>Copyright © {{ now.Format "2006"}} {{ .Site.Author.name }}</span>
+    <span>Copyright © {{ now.Format "2006"}} {{ site.Author.name }}</span>
   </div>
 </footer>
