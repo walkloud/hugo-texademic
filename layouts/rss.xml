@@ -17,7 +17,7 @@
     <link>{{ .Permalink }}</link>
     <description>Recent content {{ if ne  .Title  site.Title }}{{ with .Title }}in {{.}} {{ end }}{{ end }}on {{ site.Title }}</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>{{ site.Language.LanguageCode }}</language>{{ with site.Params.author_email }}
+    <language>{{ site.Language.Locale }}</language>{{ with site.Params.author_email }}
     <managingEditor>{{.}}{{ with site.Params.author }} ({{.}}){{end}}</managingEditor>{{end}}{{ with site.Params.author_email }}
     <webMaster>{{.}}{{ with site.Params.author }} ({{.}}){{end}}</webMaster>{{end}}{{ with site.Copyright }}
     <copyright>{{.}}</copyright>{{end}}{{ if not .Date.IsZero }}
