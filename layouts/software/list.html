@@ -4,7 +4,7 @@
 {{ define "main" }}
 <main id="main">
 
-  {{ $pages := where .Site.RegularPages "Type" "software" }}
+  {{ $pages := where site.RegularPages "Type" "software" }}
 
   {{/* HPC Software */}}
   {{ $libs := where $pages "Params.software_type" "hpc" }}

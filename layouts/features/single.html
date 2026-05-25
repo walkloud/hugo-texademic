@@ -8,13 +8,13 @@
 {{ define "main" }}
 <main class="grid-container">
     <div id="content" class="index">
-        {{ with .Site.GetPage "index.md" "features" }}
+        {{ with site.GetPage "index.md" "features" }}
             {{ .Content }}
         {{ end }}
     </div>
 
     <div class="sidebar">
-        {{ if .Site.Taxonomies.categories }}
+        {{ if site.Taxonomies.categories }}
         <h3 class="taxonomy">
             <span class="icon">
                 <svg width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="taxonomy-svg">
@@ -23,14 +23,14 @@
             <a href="/categories/">Categories</a>
         </h3>
         <ul class="nav-list sidenav">
-            {{range first 10 ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+            {{range first 10 (site.GetPage "taxonomyTerm" "categories").Pages }}
             <li>
                 <a href="{{ .Permalink }}">{{.Title}}</a>
             </li>
             {{ end }}
         </ul>
         {{ end }}
-        {{ if .Site.Taxonomies.tags }}
+        {{ if site.Taxonomies.tags }}
         <p></p>
         <h3 class="taxonomy">
             <span class="icon">
@@ -40,7 +40,7 @@
             <a href="/tags/">Tags</a>
         </h3>
         <ul class="nav-list sidenav">
-            {{range first 10 ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
+            {{range first 10 (site.GetPage "taxonomyTerm" "tags").Pages }}
             <li>
                 <a href="{{ .Permalink }}">{{.Title}}</a>
             </li>

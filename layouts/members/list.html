@@ -3,9 +3,9 @@
 
 {{ define "main" }}
 <main id="main">
-  {{ $pages := where .Site.RegularPages "Type" "members" }}
+  {{ $pages := where site.RegularPages "Type" "members" }}
 
-  {{ with .Site.Params.memberClass }}
+  {{ with site.Params.memberClass }}
     {{/* let user specifiy whether to group members by "class" 
          default = false 
     */}}

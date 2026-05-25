@@ -3,7 +3,7 @@
 
 {{ define "main" }}
 <main id="main" class="archive">
-  {{ $pages := where .Data.Pages "Type" "posts" }}
+  {{ $pages := where site.RegularPages "Type" "posts" }}
   {{ range $pages.GroupByDate "2006" }}
   <div class="post-group">
     <h3>{{ .Key }}</h3>
@@ -11,7 +11,7 @@
       {{ range .Pages }}
       <li>
         <a class="link" href="{{ .RelPermalink }}">{{ .Title }}</a>
-        <time>{{ .PublishDate.Format .Site.Params.dateFormat }}</time>
+        <time>{{ .PublishDate.Format site.Params.dateFormat }}</time>
       </li>
       {{ end }}
     </ul>
