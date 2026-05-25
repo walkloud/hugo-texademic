@@ -5,9 +5,9 @@
   [goldmark.renderer]
     unsafe = true
   [goldmark.renderHooks.image]
-    enableDefault = true
+    useEmbedded = "fallback"
   [goldmark.renderHooks.link]
-    enableDefault = true
+    useEmbedded = "fallback"
 
 
 [highlight]
