@@ -2,7 +2,7 @@ baseURL = "https://walkloud.github.io/hugo-texademic/"
 enableGitInfo = false # true: page modification date set by last git commit
 enableRobotsTXT = true
 hasCJKLanguage = true
-languageCode = "en"
+locale = "en"
 rssLimit = 10
 title = "tab-title"
 
