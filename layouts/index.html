@@ -21,30 +21,38 @@
     <h2 style="margin-top: 1cm">Latest News</h2>
     {{ $allowedTypes := slice "news" "publications" }}
     {{ range ( where site.RegularPages "Type" "in" $allowedTypes | first $nNews ) }}
-      <div class="row align-items-start">
-        <div class="col-sm-3">
-          <h4><time style="margin-left: 0rem">{{ .PublishDate.Format site.Params.dateFormat }}</time></h4>
+      <div class="card card__frontpage">
+        <div class="date">
+          <time>{{ .PublishDate.Format site.Params.dateFormat }}</time>
         </div>
-        <div class="col">
-          <h3><a href="{{ .Permalink }}"> {{ .Title }}</a></h3>
-          {{ if eq .Type "publications" }}
-            <p>
-            {{ if .Params.journal }}
-              {{ if .Params.doi }}
-                <a class="link" href="{{ .Params.doi }}" target="_blank">{{ .Params.journal }}</a>
+        <div class="details">
+          <h3 class="title"><a href="{{ .Permalink }}"> {{ .Title }}</a></h3>
+          <div class="summary">
+            {{ if eq .Type "publications" }}
+              {{ if .Params.journal }}
+                {{ if .Params.doi }}
+                  <a class="link" href="{{ .Params.doi }}" target="_blank">{{ .Params.journal }}</a>
+                {{ else }}
+                  {{ .Params.journal }}
+                {{ end }}
+                [ <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a> ]
               {{ else }}
-                {{ .Params.journal }}
+                <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a>
               {{ end }}
-              [ <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a> ]
+              {{ if .Params.comment }}
+                <span class="card__footer_highlight"> | {{ .Params.comment }}</span>
+              {{ end }}
             {{ else }}
-              <a class="link" href="https://arxiv.org/abs/{{ .Params.arXiv }}" target="_blank">arXiv:{{ .Params.arXiv }}</a>
+              {{ .Summary }}
             {{ end }}
-            {{ if .Params.comment }}
-              <span class="card__footer_highlight"> | {{ .Params.comment }}</span>
-            {{ end }}
-            </p>
-          {{ end }}
+          </div>
         </div>
+        {{ $image := .Params.front_page | default .Params.image }}
+        {{ with $image }}
+          {{ with resources.Get . }}
+            <img src="{{ .RelPermalink }}">
+          {{ end }}
+        {{ end }}
       </div>
     {{ end }}
     </div>

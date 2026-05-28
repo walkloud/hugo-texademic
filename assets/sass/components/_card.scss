@@ -100,6 +100,42 @@ $sub-card-layouts: (
     padding: 1.5rem;
     align-items: start;
   }
+
+  &__frontpage {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    align-items: start;
+
+    .date {
+      @include mixins.h6-styles;
+      margin: 0;
+      color: var(--fg_highlight);
+    }
+    .details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .title {
+        @include mixins.h4-styles;
+        margin: 0;
+        color: var(--fg_highlight);
+      }
+      .summary {
+        @include mixins.h5-styles;
+        margin: 0;
+        color: var(--fg);
+      }
+    }
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+  }
   &__news-details {
     display: flex;
     flex-direction: column;
