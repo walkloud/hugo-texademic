@@ -33,10 +33,9 @@ To make a new site with this theme, one option is
 8. `bash themes/hugo-texademic/scripts/add_npm_modules.sh`
 9. git add:
     - git add themes/hugo-texademic/
-    - git add package-lock.json
+    - git add package.json, package-lock.json
     - git add content
     - git add hugo.toml
-    - git add package.json
     - git add <.gitignore> <other_files_you_added>
 10. create a `.github/workflows` directory and copy the example `.github-tmp/workflows/hugo.yaml` file there.
 11. git add package.json package-lock.json; git add <your content>
