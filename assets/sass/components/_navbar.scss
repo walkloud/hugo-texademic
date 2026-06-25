@@ -73,7 +73,16 @@
       display: inline-block;
       position: relative;
       vertical-align: middle;
-      line-height: 1.2;
+
+      .nav-logo {
+        //width: 24px;   /* Adjust size as needed */
+        //height: 24px;
+        object-fit: contain;
+        vertical-align: middle;
+        max-height: 3rem;
+        width: auto;
+        //vertical-align: middle;
+      }
 
       // Add line under menu items
       &:after {

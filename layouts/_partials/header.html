@@ -9,23 +9,45 @@
   </button>
   <nav>
     {{ range site.Menus.main }}
-      {{ if .HasChildren }}
+      {{ $menuItem := . }}
+      {{ if $menuItem.HasChildren }}
         <div class="dropdown">
           <span class="nav-item">
-            {{ if .Pre }}<span class="icon">{{ .Pre | safeHTML }}</span>{{ end }}
-            <a class="link" href="{{ .URL | safeURL }}">{{ .Name }} <span class="arrow">▾</span></a>
+            {{ if $menuItem.Pre }}<span class="icon">{{ $menuItem.Pre | safeHTML }}</span>{{ end }}
+            <a class="link" href="{{ $menuItem.URL | safeURL }}">
+              {{ if $menuItem.Params.icon }}
+                {{ with resources.Get $menuItem.Params.icon }}
+                  <img src="{{ .RelPermalink }}" alt="{{ $menuItem.Name }}" class="nav-logo">
+                {{ else }}
+                  <img src="{{ $menuItem.Params.icon | relURL }}" alt="{{ $menuItem.Name }}" class="nav-logo">
+                {{ end }}
+              {{ else }}
+                {{ $menuItem.Name }}
+              {{ end }}
+              <span class="arrow">▾</span>
+            </a>
           </span>
 
           <div class="dropdown-content">
-            {{ range .Children }}
+            {{ range $menuItem.Children }}
               <a class="link sub-link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
             {{ end }}
           </div>
         </div>
       {{ else }}
         <span>
-          {{ if .Pre }}<span class="icon">{{ .Pre | safeHTML }}</span>{{ end }}
-          <a class="link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
+          {{ if $menuItem.Pre }}<span class="icon">{{ $menuItem.Pre | safeHTML }}</span>{{ end }}
+          <a class="link" href="{{ $menuItem.URL | safeURL }}">
+            {{ if $menuItem.Params.icon }}
+              {{ with resources.Get $menuItem.Params.icon }}
+                <img src="{{ .RelPermalink }}" alt="{{ $menuItem.Name }}" class="nav-logo">
+              {{ else }}
+                <img src="{{ $menuItem.Params.icon | relURL }}" alt="{{ $menuItem.Name }}" class="nav-logo">
+              {{ end }}
+            {{ else }}
+              {{ $menuItem.Name }}
+            {{ end }}
+          </a>
         </span>
       {{ end }}
     {{ end }}
