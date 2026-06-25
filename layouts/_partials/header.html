@@ -13,7 +13,14 @@
         <div class="dropdown">
           <span class="nav-item">
             {{ if .Pre }}<span class="icon">{{ .Pre | safeHTML }}</span>{{ end }}
-            <a class="link" href="{{ .URL | safeURL }}">{{ .Name }} <span class="arrow">▾</span></a>
+            <a class="link" href="{{ .URL | safeURL }}">
+              {{ if or (hasSuffix .Name ".png") (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".svg") (hasSuffix .Name ".webp") }}
+                <img src="{{ .Name | relURL }}" alt="logo" class="nav-logo">
+              {{ else }}
+                {{ .Name }}
+              {{ end }}
+              <span class="arrow">▾</span>
+            </a>
           </span>
 
           <div class="dropdown-content">
@@ -25,7 +32,13 @@
       {{ else }}
         <span>
           {{ if .Pre }}<span class="icon">{{ .Pre | safeHTML }}</span>{{ end }}
-          <a class="link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
+          <a class="link" href="{{ .URL | safeURL }}">
+            {{ if or (hasSuffix .Name ".png") (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".svg") (hasSuffix .Name ".webp") }}
+              <img src="{{ .Name | relURL }}" alt="logo" class="nav-logo">
+            {{ else }}
+              {{ .Name }}
+            {{ end }}
+          </a>
         </span>
       {{ end }}
     {{ end }}
