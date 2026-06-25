@@ -13,7 +13,7 @@ npm install autoprefixer
 npm install postcss-cli
 npm install postcss-import
 ```
-Then, add the `package-lock.json` to your webpage repo.
+Then, add the `package-lock.json` to your webpage repo.  To manage this, I created a script, see steps 8,9 below.
 
 
 I wanted to create a theme that is useful for my interests in creating a static site for an academic group and an individual.
@@ -33,10 +33,15 @@ To make a new site with this theme, one option is
 8. `bash themes/hugo-texademic/scripts/add_npm_modules.sh`
 9. git add:
     - git add themes/hugo-texademic/
+    - git add package-lock.json
     - git add content
-10. git add package.json package-lock.json; git add <your content>
-11. follow instructions: `https://gohugo.io/host-and-deploy/host-on-github-pages/`
-12. git commit; git push;
+    - git add hugo.toml
+    - git add package.json
+    - git add <.gitignore> <other_files_you_added>
+10. create a `.github/workflows` directory and copy the example `.github-tmp/workflows/hugo.yaml` file there.
+11. git add package.json package-lock.json; git add <your content>
+12. follow instructions: `https://gohugo.io/host-and-deploy/host-on-github-pages/`
+13. git commit; git push;
 
 ### Collaboration Page
 
