@@ -29,7 +29,7 @@
       <h2>{{ .Params.first_name }} {{ .Params.last_name }}</h2>
     </div>
     <div class="portrait-title">
-      <h5>{{ .Params.title }}, {{ .Params.institute }}</h5>
+      <h5>{{ with .Params.title }}{{ . }},{{ end }} {{ .Params.institute }}</h5>
     </div>
     <div class="portrait-title">
       <h5><a href="{{ .Params.website }}" target="_blank">Personal website</a></h5>
