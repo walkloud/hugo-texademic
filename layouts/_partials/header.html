@@ -61,10 +61,19 @@
 <hr class="head-rule"></hr>
 {{ with .Params.page_banner }}
   {{ with resources.Get . }}
-    <section class="hero" style="background-image: url('{{ .RelPermalink }}');">
-      <h1>{{ $.Title }}</h1>
-    </section>
+    {{ if $.Params.page_banner_full_height }}
+      <section class="hero hero--full-height">
+        <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" class="hero-img">
+        <div class="hero-content">
+          <h1>{{ $.Title }}</h1>
+        </div>
+      </section>
     {{ else }}
-      <p style="color: red;">front-matter/page_banner not found in "assets/{{ . }}"</p>
+      <section class="hero" style="background-image: url('{{ .RelPermalink }}');">
+        <h1>{{ $.Title }}</h1>
+      </section>
     {{ end }}
+  {{ else }}
+    <p style="color: red;">front-matter/page_banner not found in "assets/{{ . }}"</p>
   {{ end }}
+{{ end }}
