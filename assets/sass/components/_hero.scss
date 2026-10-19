@@ -16,6 +16,17 @@
     min-height: auto;
     display: block;
 
+    &.hero--max-height {
+      display: flex;
+      justify-content: center;
+
+      .hero-img {
+        width: auto;
+        max-width: 100%;
+        max-height: var(--banner-max-height);
+      }
+    }
+
     .hero-img {
       width: 100%;
       height: auto;
