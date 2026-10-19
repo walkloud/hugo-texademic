@@ -61,7 +61,7 @@
 <hr class="head-rule"></hr>
 {{ with .Params.page_banner }}
   {{ with resources.Get . }}
-    {{ if $.Params.page_banner_full_height || $.Params.page_banner_max_height }}
+    {{ if or $.Params.page_banner_full_height $.Params.page_banner_max_height }}
       <section class="hero hero--full-height {{ if $.Params.page_banner_max_height }}hero--max-height{{ end }}" {{ if $.Params.page_banner_max_height }}style="--banner-max-height: {{ $.Params.page_banner_max_height }};"{{ end }}>
         <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" class="hero-img">
         <div class="hero-content">
