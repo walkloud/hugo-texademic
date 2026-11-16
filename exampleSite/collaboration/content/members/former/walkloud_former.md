@@ -2,7 +2,7 @@
 former: true
 first_name: André
 last_name: Walker-Loud
-portrait: images/andre_by_avi.jpg
+portrait: "images/portraits/andre_by_avi.jpg"
 begin_date: 2010-09-01
 end_date: 2013-06-30
 begin_year: 2010

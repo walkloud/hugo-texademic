@@ -18,7 +18,7 @@ presenter = "presenter"
     theme="blue-grey"
     dateFormat = "2 January 2006"
     front_news = 5
-    home_banner = "assets/images/banners/lbl_bay_fog_golden.jpg"
+    home_banner = "images/banners/lbl_bay_fog_golden.jpg"
 
     title="<GROUP_NAME> Collaboration"
     author = "André Walker-Loud"

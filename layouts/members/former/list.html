@@ -31,7 +31,7 @@
         <div class="card__former-member">
           {{/* resolve portrait: fall back to default_portrait if not set or file not found */}}
           {{ $img := "" }}
-          {{ with .Params.portrait }}
+          {{ with $member.Params.portrait }}
             {{ with resources.Get . }}
               {{ $img = . }}
             {{ end }}
