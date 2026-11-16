@@ -11,6 +11,27 @@
     {{ range site.Menus.main }}
       {{ $menuItem := . }}
       {{ if $menuItem.HasChildren }}
+        {{/* only show sub menu entries whose target member list is non-empty
+             (mirrors the filters used in the members list templates) */}}
+        {{ $shownChildren := slice }}
+        {{ range $menuItem.Children }}
+          {{ $child := . }}
+          {{ $show := true }}
+          {{ with .Page }}
+            {{ if eq .Section "members" }}
+              {{ $pages := where site.RegularPages "Type" "members" }}
+              {{ $sub := path.Base .RelPermalink }}
+              {{ if eq $sub "former" }}
+                {{ $show = gt (len (where $pages "Params.former" true)) 0 }}
+              {{ else }}
+                {{ $pos := strings.TrimSuffix "s" $sub }}
+                {{ $show = gt (len (where $pages "Params.position" "like" (printf "(?i)^%s$" $pos))) 0 }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          {{ if $show }}{{ $shownChildren = $shownChildren | append $child }}{{ end }}
+        {{ end }}
+        {{ if gt (len $shownChildren) 0 }}
         <div class="dropdown">
           <span class="nav-item">
             {{ if $menuItem.Pre }}<span class="icon">{{ $menuItem.Pre | safeHTML }}</span>{{ end }}
@@ -29,11 +50,12 @@
           </span>
 
           <div class="dropdown-content">
-            {{ range $menuItem.Children }}
+            {{ range $shownChildren }}
               <a class="link sub-link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
             {{ end }}
           </div>
         </div>
+        {{ end }}
       {{ else }}
         <span>
           {{ if $menuItem.Pre }}<span class="icon">{{ $menuItem.Pre | safeHTML }}</span>{{ end }}
