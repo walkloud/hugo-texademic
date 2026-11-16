@@ -20,9 +20,13 @@
       {{/* sort by end date: use end_date (full date) if given, otherwise end_year (treated as December 31 of that year) */}}
       {{ $sorted := slice }}
       {{ range $members }}
-        {{ $end := time (printf "%d-12-31" (int .Params.end_year)) }}
+        {{ $end := "" }}
         {{ with .Params.end_date }}
           {{ $end = time . }}
+        {{ else }}
+          {{ with .Params.end_year }}
+            {{ $end = time (printf "%d-12-31" (int .)) }}
+          {{ end }}
         {{ end }}
         {{ $sorted = $sorted | append (dict "end" $end "member" .) }}
       {{ end }}
