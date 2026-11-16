@@ -5,6 +5,14 @@ portrait: # copy an image to assets/images, otherwise, get anonymous
 institute: Institute
 position: senior #senior, postdoc, gradstudent, undergrad, former
 title: Title #Senior Scientist, Professor, ...
+# for former members: full dates are optional; if omitted, begin_year/end_year are used
+# begin_date: 2010-09-01
+# end_date: 2013-06-30
+# begin_year: 2010
+# end_year: 2013
+# former: true
+# old_position: Postdoc
+# new_position: Senior Scientist
 website: # if you have a home page
 email: # your email
 phone: # your work phone number [optional]

@@ -14,10 +14,20 @@
         <div class="details"><strong>Photo</strong></div>
         <div class="details"><strong>Name</strong></div>
         <div class="details"><strong>Role</strong></div>
-        <div class="details"><strong>Years</strong></div>
+        <div class="details"><strong>Dates</strong></div>
         <div class="details"><strong>Current Position</strong></div>
       </div>
-      {{ range sort $members "Params.end_year" "desc" }}
+      {{/* sort by end date: use end_date (full date) if given, otherwise end_year (treated as December 31 of that year) */}}
+      {{ $sorted := slice }}
+      {{ range $members }}
+        {{ $end := time (printf "%d-12-31" (int .Params.end_year)) }}
+        {{ with .Params.end_date }}
+          {{ $end = time . }}
+        {{ end }}
+        {{ $sorted = $sorted | append (dict "end" $end "member" .) }}
+      {{ end }}
+      {{ range sort $sorted "end" "desc" }}
+        {{ $member := .member }}
         <div class="card__former-member">
           {{/* resolve portrait: fall back to default_portrait if not set or file not found */}}
           {{ $img := "" }}
@@ -36,16 +46,22 @@
           {{ with $img }}
             <img src="{{ $img.RelPermalink }}">
           {{ end }}
-          <div class="details">{{ .Params.first_name }} {{ .Params.last_name }}</div>
-          <div class="details">{{ .Params.old_position }}</div>
-          <div class="details">{{ .Params.begin_year }}--{{ .Params.end_year }}</div>
+          <div class="details">{{ $member.Params.first_name }} {{ $member.Params.last_name }}</div>
+          <div class="details">{{ $member.Params.old_position }}</div>
           <div class="details">
-            {{ if .Params.webpage }}
-              <a class="link" href="{{ .Params.webpage }}" target="_blank">{{ .Params.new_position }}</a>
+            {{ $begin := "" }}
+            {{ with $member.Params.begin_date }}{{ $begin = time . | time.Format site.Params.dateFormat }}{{ else }}{{ with $member.Params.begin_year }}{{ $begin = . }}{{ end }}{{ end }}
+            {{ $endStr := "" }}
+            {{ with $member.Params.end_date }}{{ $endStr = time . | time.Format site.Params.dateFormat }}{{ else }}{{ with $member.Params.end_year }}{{ $endStr = . }}{{ end }}{{ end }}
+            {{ $begin }}--{{ $endStr }}
+          </div>
+          <div class="details">
+            {{ if $member.Params.webpage }}
+              <a class="link" href="{{ $member.Params.webpage }}" target="_blank">{{ $member.Params.new_position }}</a>
             {{ else }}
-              {{ .Params.new_position }}
+              {{ $member.Params.new_position }}
             {{ end }}
-            @ {{ .Params.institute }}
+            @ {{ $member.Params.institute }}
           </div>
         </div>
       {{ end }}
