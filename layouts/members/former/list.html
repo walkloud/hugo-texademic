@@ -19,16 +19,22 @@
       </div>
       {{ range sort $members "Params.end_year" "desc" }}
         <div class="card__former-member">
+          {{/* resolve portrait: fall back to default_portrait if not set or file not found */}}
+          {{ $img := "" }}
           {{ with .Params.portrait }}
             {{ with resources.Get . }}
-              <img src="{{ .RelPermalink }}">
+              {{ $img = . }}
             {{ end }}
-          {{ else }}
+          {{ end }}
+          {{ if not $img }}
             {{ with site.Params.default_portrait }}
               {{ with resources.Get . }}
-                <img src="{{ .RelPermalink }}">
+                {{ $img = . }}
               {{ end }}
             {{ end }}
+          {{ end }}
+          {{ with $img }}
+            <img src="{{ $img.RelPermalink }}">
           {{ end }}
           <div class="details">{{ .Params.first_name }} {{ .Params.last_name }}</div>
           <div class="details">{{ .Params.old_position }}</div>

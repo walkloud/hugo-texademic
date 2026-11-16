@@ -11,7 +11,7 @@
     */}}
 
     {{/* SENIORS */}}
-    {{ $members := where $pages "Params.position" "senior" }}
+    {{ $members := where $pages "Params.position" "like" "(?i)^senior$" }}
     {{ if gt (len $members) 0 }}
       <div class="container-fluid">
         <h1>Faculty and Staff</h1>
@@ -24,7 +24,7 @@
     {{ end }}
 
     {{/* PostDocs */}}
-    {{ $members := where $pages "Params.position" "postdoc" }}
+    {{ $members := where $pages "Params.position" "like" "(?i)^postdoc$" }}
     {{ if gt (len $members) 0 }}
       <div class="container-fluid">
         <h1>Postdocs</h1>
@@ -37,7 +37,7 @@
     {{ end }}
 
     {{/* GradStudents */}}
-    {{ $members := where $pages "Params.position" "gradstudent" }}
+    {{ $members := where $pages "Params.position" "like" "(?i)^gradstudent$" }}
     {{ if gt (len $members) 0 }}
       <div class="container-fluid">
         <h1>Grad Students</h1>
@@ -50,7 +50,7 @@
     {{ end }}
 
     {{/* Under Grads */}}
-    {{ $members := where $pages "Params.position" "undergrad" }}
+    {{ $members := where $pages "Params.position" "like" "(?i)^undergrad$" }}
     {{ if gt (len $members) 0 }}
       <div class="container-fluid">
         <h1>Undergraduate Students</h1>

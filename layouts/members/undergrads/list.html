@@ -5,7 +5,7 @@
 <main id="main">
   {{ $pages := where site.RegularPages "Type" "members" }}
 
-  {{ $members := where $pages "Params.position" "undergrad" }}
+  {{ $members := where $pages "Params.position" "like" "(?i)^undergrad$" }}
   {{ if gt (len $members) 0 }}
     <div class="container-fluid">
       <h1>Undergrads</h1>

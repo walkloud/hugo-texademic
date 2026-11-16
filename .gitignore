@@ -10,3 +10,4 @@ assets/jsconfig.json
 hugo_stats.json
 .hugo_build.lock
 .DS_Store
+exampleSite/collaboration/resources/
